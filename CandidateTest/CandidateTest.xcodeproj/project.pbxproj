@@ -3,18 +3,54 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		453EC82A2CE5DE5C00F152C9 /* GiftCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8292CE5DE5C00F152C9 /* GiftCardListView.swift */; };
+		453EC82D2CE5E00600F152C9 /* GiftCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC82C2CE5E00600F152C9 /* GiftCard.swift */; };
+		453EC8312CE5E04800F152C9 /* GiftCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8302CE5E04800F152C9 /* GiftCardView.swift */; };
+		453EC8352CE5E35B00F152C9 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8342CE5E35B00F152C9 /* APIEndpoint.swift */; };
+		453EC8392CE5E3CF00F152C9 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8382CE5E3CF00F152C9 /* NetworkError.swift */; };
+		453EC83B2CE5E40C00F152C9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC83A2CE5E40C00F152C9 /* NetworkService.swift */; };
+		453EC83E2CE5E56200F152C9 /* GiftCardsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC83D2CE5E56200F152C9 /* GiftCardsEndpoint.swift */; };
+		453EC8412CE5E5FE00F152C9 /* FetchGiftCardsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8402CE5E5FE00F152C9 /* FetchGiftCardsUseCase.swift */; };
+		453EC8442CE5E69000F152C9 /* GiftCardShopRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8432CE5E69000F152C9 /* GiftCardShopRepository.swift */; };
+		453EC8472CE5E72000F152C9 /* GiftCardShopRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8462CE5E72000F152C9 /* GiftCardShopRepositoryImpl.swift */; };
+		453EC84A2CE5E7ED00F152C9 /* GiftCardShopDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8492CE5E7ED00F152C9 /* GiftCardShopDataSource.swift */; };
+		453EC84C2CE5E8C900F152C9 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC84B2CE5E8C900F152C9 /* HTTPMethod.swift */; };
+		453EC84E2CE600FE00F152C9 /* GiftCardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC84D2CE600FE00F152C9 /* GiftCardListViewModel.swift */; };
+		453EC8502CE60DFA00F152C9 /* Denomination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC84F2CE60DFA00F152C9 /* Denomination.swift */; };
+		453EC8522CE60E0E00F152C9 /* CustomDenomination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8512CE60E0E00F152C9 /* CustomDenomination.swift */; };
+		453EC8562CE6150F00F152C9 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8552CE6150F00F152C9 /* ErrorView.swift */; };
+		453EC85E2CE6A74000F152C9 /* MockFetchGiftCardsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC85D2CE6A74000F152C9 /* MockFetchGiftCardsUseCase.swift */; };
+		453EC8602CE6AAEF00F152C9 /* GiftCardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC85F2CE6AAEF00F152C9 /* GiftCardDetailsView.swift */; };
+		453EC8622CE6AB3B00F152C9 /* GiftCardDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8612CE6AB3B00F152C9 /* GiftCardDetailsViewModel.swift */; };
+		453EC8642CE6AB6200F152C9 /* FetchGiftCardDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8632CE6AB6200F152C9 /* FetchGiftCardDetailsUseCase.swift */; };
+		453EC8672CE6B9A600F152C9 /* ImageUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8662CE6B9A600F152C9 /* ImageUrl.swift */; };
+		453EC86B2CE6C11F00F152C9 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC86A2CE6C11F00F152C9 /* DIContainer.swift */; };
+		453EC86E2CE6C18D00F152C9 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 453EC86D2CE6C18D00F152C9 /* Swinject */; };
+		453EC8742CE6C26B00F152C9 /* DIContainer+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8732CE6C26B00F152C9 /* DIContainer+ViewModel.swift */; };
+		453EC8762CE6C2A200F152C9 /* DIContainer+UseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8752CE6C2A200F152C9 /* DIContainer+UseCase.swift */; };
+		453EC8782CE6C2BF00F152C9 /* DIContainer+Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8772CE6C2BF00F152C9 /* DIContainer+Repository.swift */; };
+		453EC87A2CE6C2D700F152C9 /* DIContainer+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8792CE6C2D700F152C9 /* DIContainer+DataSource.swift */; };
+		453EC87C2CE6C2F600F152C9 /* DIContainer+Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC87B2CE6C2F600F152C9 /* DIContainer+Manager.swift */; };
+		453EC8862CE6CCE100F152C9 /* MockGiftCardShopRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8852CE6CCE100F152C9 /* MockGiftCardShopRepository.swift */; };
+		453EC8882CE6CE1300F152C9 /* MockGiftCardShopDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8872CE6CE1300F152C9 /* MockGiftCardShopDataSource.swift */; };
+		453EC88A2CE6CECC00F152C9 /* MockFetchGiftCardDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8892CE6CECC00F152C9 /* MockFetchGiftCardDetailsUseCase.swift */; };
+		453EC88C2CE6CF7100F152C9 /* FetchGiftCardsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC88B2CE6CF7100F152C9 /* FetchGiftCardsUseCaseTests.swift */; };
+		453EC88E2CE6D08500F152C9 /* FetchGiftCardDetailsUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC88D2CE6D08500F152C9 /* FetchGiftCardDetailsUseCaseTests.swift */; };
+		453EC8932CE6D1FD00F152C9 /* GiftCardShopRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8922CE6D1FD00F152C9 /* GiftCardShopRepositoryTests.swift */; };
+		453EC8972CE6D33F00F152C9 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8962CE6D33F00F152C9 /* MockNetworkService.swift */; };
+		453EC8992CE6D3C900F152C9 /* GiftCardShopDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8982CE6D3C900F152C9 /* GiftCardShopDataSourceTests.swift */; };
+		453EC89D2CE6D63A00F152C9 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC89C2CE6D63A00F152C9 /* ViewState.swift */; };
+		453EC89F2CE6D6E600F152C9 /* GiftCardListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC89E2CE6D6E600F152C9 /* GiftCardListViewModelTests.swift */; };
+		453EC8A12CE6DC6300F152C9 /* GiftCardDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8A02CE6DC6300F152C9 /* GiftCardDetailsViewModelTests.swift */; };
 		8306B7B3254A36390021DDFD /* CandidateTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8306B7B2254A36390021DDFD /* CandidateTestApp.swift */; };
-		8306B7B5254A36390021DDFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8306B7B4254A36390021DDFD /* ContentView.swift */; };
 		8306B7B7254A363B0021DDFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8306B7B6254A363B0021DDFD /* Assets.xcassets */; };
 		8306B7BA254A363B0021DDFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8306B7B9254A363B0021DDFD /* Preview Assets.xcassets */; };
-		8306B7C5254A363C0021DDFD /* CandidateTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8306B7C4254A363C0021DDFD /* CandidateTestTests.swift */; };
 		8306B7D0254A363C0021DDFD /* CandidateTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8306B7CF254A363C0021DDFD /* CandidateTestUITests.swift */; };
 		8397D1B0254A41D300EB2717 /* DEVELOPERS.md in Resources */ = {isa = PBXBuildFile; fileRef = 8397D1AD254A41D300EB2717 /* DEVELOPERS.md */; };
-		8397D1B1254A41D300EB2717 /* hackerrank.yml in Resources */ = {isa = PBXBuildFile; fileRef = 8397D1AE254A41D300EB2717 /* hackerrank.yml */; };
 		8397D1B2254A41D300EB2717 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8397D1AF254A41D300EB2717 /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -35,21 +71,69 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		453EC8722CE6C18D00F152C9 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		453EC8292CE5DE5C00F152C9 /* GiftCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardListView.swift; sourceTree = "<group>"; };
+		453EC82C2CE5E00600F152C9 /* GiftCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCard.swift; sourceTree = "<group>"; };
+		453EC8302CE5E04800F152C9 /* GiftCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardView.swift; sourceTree = "<group>"; };
+		453EC8342CE5E35B00F152C9 /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		453EC8382CE5E3CF00F152C9 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		453EC83A2CE5E40C00F152C9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		453EC83D2CE5E56200F152C9 /* GiftCardsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardsEndpoint.swift; sourceTree = "<group>"; };
+		453EC8402CE5E5FE00F152C9 /* FetchGiftCardsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGiftCardsUseCase.swift; sourceTree = "<group>"; };
+		453EC8432CE5E69000F152C9 /* GiftCardShopRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardShopRepository.swift; sourceTree = "<group>"; };
+		453EC8462CE5E72000F152C9 /* GiftCardShopRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardShopRepositoryImpl.swift; sourceTree = "<group>"; };
+		453EC8492CE5E7ED00F152C9 /* GiftCardShopDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardShopDataSource.swift; sourceTree = "<group>"; };
+		453EC84B2CE5E8C900F152C9 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		453EC84D2CE600FE00F152C9 /* GiftCardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardListViewModel.swift; sourceTree = "<group>"; };
+		453EC84F2CE60DFA00F152C9 /* Denomination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Denomination.swift; sourceTree = "<group>"; };
+		453EC8512CE60E0E00F152C9 /* CustomDenomination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDenomination.swift; sourceTree = "<group>"; };
+		453EC8552CE6150F00F152C9 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		453EC85D2CE6A74000F152C9 /* MockFetchGiftCardsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetchGiftCardsUseCase.swift; sourceTree = "<group>"; };
+		453EC85F2CE6AAEF00F152C9 /* GiftCardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardDetailsView.swift; sourceTree = "<group>"; };
+		453EC8612CE6AB3B00F152C9 /* GiftCardDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardDetailsViewModel.swift; sourceTree = "<group>"; };
+		453EC8632CE6AB6200F152C9 /* FetchGiftCardDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGiftCardDetailsUseCase.swift; sourceTree = "<group>"; };
+		453EC8662CE6B9A600F152C9 /* ImageUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrl.swift; sourceTree = "<group>"; };
+		453EC86A2CE6C11F00F152C9 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		453EC8732CE6C26B00F152C9 /* DIContainer+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+ViewModel.swift"; sourceTree = "<group>"; };
+		453EC8752CE6C2A200F152C9 /* DIContainer+UseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+UseCase.swift"; sourceTree = "<group>"; };
+		453EC8772CE6C2BF00F152C9 /* DIContainer+Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+Repository.swift"; sourceTree = "<group>"; };
+		453EC8792CE6C2D700F152C9 /* DIContainer+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+DataSource.swift"; sourceTree = "<group>"; };
+		453EC87B2CE6C2F600F152C9 /* DIContainer+Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DIContainer+Manager.swift"; sourceTree = "<group>"; };
+		453EC8852CE6CCE100F152C9 /* MockGiftCardShopRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGiftCardShopRepository.swift; sourceTree = "<group>"; };
+		453EC8872CE6CE1300F152C9 /* MockGiftCardShopDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGiftCardShopDataSource.swift; sourceTree = "<group>"; };
+		453EC8892CE6CECC00F152C9 /* MockFetchGiftCardDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFetchGiftCardDetailsUseCase.swift; sourceTree = "<group>"; };
+		453EC88B2CE6CF7100F152C9 /* FetchGiftCardsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGiftCardsUseCaseTests.swift; sourceTree = "<group>"; };
+		453EC88D2CE6D08500F152C9 /* FetchGiftCardDetailsUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchGiftCardDetailsUseCaseTests.swift; sourceTree = "<group>"; };
+		453EC8922CE6D1FD00F152C9 /* GiftCardShopRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardShopRepositoryTests.swift; sourceTree = "<group>"; };
+		453EC8962CE6D33F00F152C9 /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
+		453EC8982CE6D3C900F152C9 /* GiftCardShopDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardShopDataSourceTests.swift; sourceTree = "<group>"; };
+		453EC89C2CE6D63A00F152C9 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		453EC89E2CE6D6E600F152C9 /* GiftCardListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardListViewModelTests.swift; sourceTree = "<group>"; };
+		453EC8A02CE6DC6300F152C9 /* GiftCardDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		8306B7AF254A36390021DDFD /* CandidateTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CandidateTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8306B7B2254A36390021DDFD /* CandidateTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTestApp.swift; sourceTree = "<group>"; };
-		8306B7B4254A36390021DDFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8306B7B6254A363B0021DDFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8306B7B9254A363B0021DDFD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8306B7BB254A363B0021DDFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8306B7C0254A363C0021DDFD /* CandidateTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CandidateTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8306B7C4254A363C0021DDFD /* CandidateTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTestTests.swift; sourceTree = "<group>"; };
 		8306B7C6254A363C0021DDFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8306B7CB254A363C0021DDFD /* CandidateTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CandidateTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8306B7CF254A363C0021DDFD /* CandidateTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTestUITests.swift; sourceTree = "<group>"; };
 		8306B7D1254A363C0021DDFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8397D1AD254A41D300EB2717 /* DEVELOPERS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = DEVELOPERS.md; path = ../DEVELOPERS.md; sourceTree = "<group>"; };
-		8397D1AE254A41D300EB2717 /* hackerrank.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; name = hackerrank.yml; path = ../hackerrank.yml; sourceTree = "<group>"; };
 		8397D1AF254A41D300EB2717 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				453EC86E2CE6C18D00F152C9 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,15 +163,342 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		453EC8212CE5DD2A00F152C9 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8222CE5DD7900F152C9 /* GiftCardShop */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		453EC8222CE5DD7900F152C9 /* GiftCardShop */ = {
+			isa = PBXGroup;
+			children = (
+				453EC83C2CE5E54300F152C9 /* Endpoint */,
+				453EC8232CE5DE0100F152C9 /* Domain */,
+				453EC8252CE5DE1400F152C9 /* Data */,
+				453EC8262CE5DE1A00F152C9 /* Presentation */,
+			);
+			path = GiftCardShop;
+			sourceTree = "<group>";
+		};
+		453EC8232CE5DE0100F152C9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				453EC82B2CE5DFF700F152C9 /* Entity */,
+				453EC83F2CE5E5E700F152C9 /* UseCase */,
+				453EC8422CE5E63900F152C9 /* Repository */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		453EC8252CE5DE1400F152C9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8482CE5E7AB00F152C9 /* DataSource */,
+				453EC8452CE5E70B00F152C9 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		453EC8262CE5DE1A00F152C9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8272CE5DE3100F152C9 /* View */,
+				453EC8282CE5DE3700F152C9 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		453EC8272CE5DE3100F152C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8302CE5E04800F152C9 /* GiftCardView.swift */,
+				453EC8292CE5DE5C00F152C9 /* GiftCardListView.swift */,
+				453EC85F2CE6AAEF00F152C9 /* GiftCardDetailsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		453EC8282CE5DE3700F152C9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				453EC84D2CE600FE00F152C9 /* GiftCardListViewModel.swift */,
+				453EC8612CE6AB3B00F152C9 /* GiftCardDetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		453EC82B2CE5DFF700F152C9 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				453EC82C2CE5E00600F152C9 /* GiftCard.swift */,
+				453EC84F2CE60DFA00F152C9 /* Denomination.swift */,
+				453EC8512CE60E0E00F152C9 /* CustomDenomination.swift */,
+				453EC89C2CE6D63A00F152C9 /* ViewState.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		453EC8322CE5E1FC00F152C9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8652CE6B96C00F152C9 /* ImageUrl */,
+				453EC8332CE5E20500F152C9 /* NetworkService */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		453EC8332CE5E20500F152C9 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8342CE5E35B00F152C9 /* APIEndpoint.swift */,
+				453EC8382CE5E3CF00F152C9 /* NetworkError.swift */,
+				453EC83A2CE5E40C00F152C9 /* NetworkService.swift */,
+				453EC84B2CE5E8C900F152C9 /* HTTPMethod.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		453EC83C2CE5E54300F152C9 /* Endpoint */ = {
+			isa = PBXGroup;
+			children = (
+				453EC83D2CE5E56200F152C9 /* GiftCardsEndpoint.swift */,
+			);
+			path = Endpoint;
+			sourceTree = "<group>";
+		};
+		453EC83F2CE5E5E700F152C9 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8402CE5E5FE00F152C9 /* FetchGiftCardsUseCase.swift */,
+				453EC8632CE6AB6200F152C9 /* FetchGiftCardDetailsUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		453EC8422CE5E63900F152C9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8432CE5E69000F152C9 /* GiftCardShopRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		453EC8452CE5E70B00F152C9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8462CE5E72000F152C9 /* GiftCardShopRepositoryImpl.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		453EC8482CE5E7AB00F152C9 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8492CE5E7ED00F152C9 /* GiftCardShopDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		453EC8532CE614F700F152C9 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8542CE614FD00F152C9 /* View */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		453EC8542CE614FD00F152C9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8552CE6150F00F152C9 /* ErrorView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		453EC85B2CE6A67600F152C9 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8942CE6D31E00F152C9 /* Manager */,
+				453EC8822CE6CC9C00F152C9 /* Data */,
+				453EC8812CE6CC9200F152C9 /* Domain */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		453EC85C2CE6A67E00F152C9 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				453EC85D2CE6A74000F152C9 /* MockFetchGiftCardsUseCase.swift */,
+				453EC8892CE6CECC00F152C9 /* MockFetchGiftCardDetailsUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		453EC8652CE6B96C00F152C9 /* ImageUrl */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8662CE6B9A600F152C9 /* ImageUrl.swift */,
+			);
+			path = ImageUrl;
+			sourceTree = "<group>";
+		};
+		453EC8692CE6C10E00F152C9 /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				453EC86A2CE6C11F00F152C9 /* DIContainer.swift */,
+				453EC8732CE6C26B00F152C9 /* DIContainer+ViewModel.swift */,
+				453EC8752CE6C2A200F152C9 /* DIContainer+UseCase.swift */,
+				453EC8772CE6C2BF00F152C9 /* DIContainer+Repository.swift */,
+				453EC8792CE6C2D700F152C9 /* DIContainer+DataSource.swift */,
+				453EC87B2CE6C2F600F152C9 /* DIContainer+Manager.swift */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		453EC86C2CE6C18D00F152C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		453EC87D2CE6CC3B00F152C9 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				453EC87E2CE6CC4700F152C9 /* GiftCardShop */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		453EC87E2CE6CC4700F152C9 /* GiftCardShop */ = {
+			isa = PBXGroup;
+			children = (
+				453EC87F2CE6CC5800F152C9 /* Domain */,
+				453EC88F2CE6D1D000F152C9 /* Data */,
+				453EC89A2CE6D5F500F152C9 /* Presentation */,
+			);
+			path = GiftCardShop;
+			sourceTree = "<group>";
+		};
+		453EC87F2CE6CC5800F152C9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8802CE6CC6000F152C9 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		453EC8802CE6CC6000F152C9 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				453EC88B2CE6CF7100F152C9 /* FetchGiftCardsUseCaseTests.swift */,
+				453EC88D2CE6D08500F152C9 /* FetchGiftCardDetailsUseCaseTests.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		453EC8812CE6CC9200F152C9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				453EC85C2CE6A67E00F152C9 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		453EC8822CE6CC9C00F152C9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8842CE6CCB700F152C9 /* Repository */,
+				453EC8832CE6CCA300F152C9 /* DataSource */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		453EC8832CE6CCA300F152C9 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8872CE6CE1300F152C9 /* MockGiftCardShopDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		453EC8842CE6CCB700F152C9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8852CE6CCE100F152C9 /* MockGiftCardShopRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		453EC88F2CE6D1D000F152C9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8912CE6D1E000F152C9 /* Repository */,
+				453EC8902CE6D1D700F152C9 /* DataSource */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		453EC8902CE6D1D700F152C9 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8982CE6D3C900F152C9 /* GiftCardShopDataSourceTests.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		453EC8912CE6D1E000F152C9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8922CE6D1FD00F152C9 /* GiftCardShopRepositoryTests.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		453EC8942CE6D31E00F152C9 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8952CE6D33600F152C9 /* NetworkService */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		453EC8952CE6D33600F152C9 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8962CE6D33F00F152C9 /* MockNetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		453EC89A2CE6D5F500F152C9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				453EC89B2CE6D5FE00F152C9 /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		453EC89B2CE6D5FE00F152C9 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				453EC89E2CE6D6E600F152C9 /* GiftCardListViewModelTests.swift */,
+				453EC8A02CE6DC6300F152C9 /* GiftCardDetailsViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		8306B7A6254A36390021DDFD = {
 			isa = PBXGroup;
 			children = (
 				8397D1AD254A41D300EB2717 /* DEVELOPERS.md */,
-				8397D1AE254A41D300EB2717 /* hackerrank.yml */,
 				8397D1AF254A41D300EB2717 /* README.md */,
 				8306B7B1254A36390021DDFD /* CandidateTest */,
 				8306B7C3254A363C0021DDFD /* CandidateTestTests */,
 				8306B7CE254A363C0021DDFD /* CandidateTestUITests */,
+				453EC86C2CE6C18D00F152C9 /* Frameworks */,
 				8306B7B0254A36390021DDFD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,8 +516,12 @@
 		8306B7B1254A36390021DDFD /* CandidateTest */ = {
 			isa = PBXGroup;
 			children = (
+				453EC8692CE6C10E00F152C9 /* DIContainer */,
+				453EC85B2CE6A67600F152C9 /* Mock */,
+				453EC8532CE614F700F152C9 /* Core */,
+				453EC8322CE5E1FC00F152C9 /* Managers */,
+				453EC8212CE5DD2A00F152C9 /* Features */,
 				8306B7B2254A36390021DDFD /* CandidateTestApp.swift */,
-				8306B7B4254A36390021DDFD /* ContentView.swift */,
 				8306B7B6254A363B0021DDFD /* Assets.xcassets */,
 				8306B7BB254A363B0021DDFD /* Info.plist */,
 				8306B7B8254A363B0021DDFD /* Preview Content */,
@@ -124,7 +540,7 @@
 		8306B7C3254A363C0021DDFD /* CandidateTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				8306B7C4254A363C0021DDFD /* CandidateTestTests.swift */,
+				453EC87D2CE6CC3B00F152C9 /* Features */,
 				8306B7C6254A363C0021DDFD /* Info.plist */,
 			);
 			path = CandidateTestTests;
@@ -149,6 +565,7 @@
 				8306B7AB254A36390021DDFD /* Sources */,
 				8306B7AC254A36390021DDFD /* Frameworks */,
 				8306B7AD254A36390021DDFD /* Resources */,
+				453EC8722CE6C18D00F152C9 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -226,6 +643,9 @@
 				Base,
 			);
 			mainGroup = 8306B7A6254A36390021DDFD;
+			packageReferences = (
+				453EC8682CE6C10000F152C9 /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			productRefGroup = 8306B7B0254A36390021DDFD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -242,7 +662,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8397D1B1254A41D300EB2717 /* hackerrank.yml in Resources */,
 				8306B7BA254A363B0021DDFD /* Preview Assets.xcassets in Resources */,
 				8397D1B2254A41D300EB2717 /* README.md in Resources */,
 				8306B7B7254A363B0021DDFD /* Assets.xcassets in Resources */,
@@ -271,8 +690,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8306B7B5254A36390021DDFD /* ContentView.swift in Sources */,
+				453EC8312CE5E04800F152C9 /* GiftCardView.swift in Sources */,
+				453EC86B2CE6C11F00F152C9 /* DIContainer.swift in Sources */,
+				453EC87C2CE6C2F600F152C9 /* DIContainer+Manager.swift in Sources */,
+				453EC8782CE6C2BF00F152C9 /* DIContainer+Repository.swift in Sources */,
+				453EC8392CE5E3CF00F152C9 /* NetworkError.swift in Sources */,
+				453EC8502CE60DFA00F152C9 /* Denomination.swift in Sources */,
+				453EC8522CE60E0E00F152C9 /* CustomDenomination.swift in Sources */,
+				453EC8562CE6150F00F152C9 /* ErrorView.swift in Sources */,
+				453EC8672CE6B9A600F152C9 /* ImageUrl.swift in Sources */,
+				453EC84E2CE600FE00F152C9 /* GiftCardListViewModel.swift in Sources */,
+				453EC84A2CE5E7ED00F152C9 /* GiftCardShopDataSource.swift in Sources */,
+				453EC83B2CE5E40C00F152C9 /* NetworkService.swift in Sources */,
+				453EC8442CE5E69000F152C9 /* GiftCardShopRepository.swift in Sources */,
+				453EC82D2CE5E00600F152C9 /* GiftCard.swift in Sources */,
+				453EC89D2CE6D63A00F152C9 /* ViewState.swift in Sources */,
+				453EC85E2CE6A74000F152C9 /* MockFetchGiftCardsUseCase.swift in Sources */,
+				453EC8742CE6C26B00F152C9 /* DIContainer+ViewModel.swift in Sources */,
+				453EC8622CE6AB3B00F152C9 /* GiftCardDetailsViewModel.swift in Sources */,
+				453EC8762CE6C2A200F152C9 /* DIContainer+UseCase.swift in Sources */,
+				453EC8602CE6AAEF00F152C9 /* GiftCardDetailsView.swift in Sources */,
+				453EC88A2CE6CECC00F152C9 /* MockFetchGiftCardDetailsUseCase.swift in Sources */,
+				453EC8412CE5E5FE00F152C9 /* FetchGiftCardsUseCase.swift in Sources */,
+				453EC8882CE6CE1300F152C9 /* MockGiftCardShopDataSource.swift in Sources */,
+				453EC8642CE6AB6200F152C9 /* FetchGiftCardDetailsUseCase.swift in Sources */,
+				453EC8862CE6CCE100F152C9 /* MockGiftCardShopRepository.swift in Sources */,
+				453EC8972CE6D33F00F152C9 /* MockNetworkService.swift in Sources */,
+				453EC8472CE5E72000F152C9 /* GiftCardShopRepositoryImpl.swift in Sources */,
+				453EC82A2CE5DE5C00F152C9 /* GiftCardListView.swift in Sources */,
+				453EC83E2CE5E56200F152C9 /* GiftCardsEndpoint.swift in Sources */,
+				453EC87A2CE6C2D700F152C9 /* DIContainer+DataSource.swift in Sources */,
+				453EC84C2CE5E8C900F152C9 /* HTTPMethod.swift in Sources */,
 				8306B7B3254A36390021DDFD /* CandidateTestApp.swift in Sources */,
+				453EC8352CE5E35B00F152C9 /* APIEndpoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +730,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8306B7C5254A363C0021DDFD /* CandidateTestTests.swift in Sources */,
+				453EC8992CE6D3C900F152C9 /* GiftCardShopDataSourceTests.swift in Sources */,
+				453EC88C2CE6CF7100F152C9 /* FetchGiftCardsUseCaseTests.swift in Sources */,
+				453EC89F2CE6D6E600F152C9 /* GiftCardListViewModelTests.swift in Sources */,
+				453EC8932CE6D1FD00F152C9 /* GiftCardShopRepositoryTests.swift in Sources */,
+				453EC88E2CE6D08500F152C9 /* FetchGiftCardDetailsUseCaseTests.swift in Sources */,
+				453EC8A12CE6DC6300F152C9 /* GiftCardDetailsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +1041,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		453EC8682CE6C10000F152C9 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		453EC86D2CE6C18D00F152C9 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 453EC8682CE6C10000F152C9 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8306B7A7254A36390021DDFD /* Project object */;
 }

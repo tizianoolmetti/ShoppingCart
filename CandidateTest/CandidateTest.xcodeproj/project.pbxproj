@@ -46,6 +46,18 @@
 		453EC89D2CE6D63A00F152C9 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC89C2CE6D63A00F152C9 /* ViewState.swift */; };
 		453EC89F2CE6D6E600F152C9 /* GiftCardListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC89E2CE6D6E600F152C9 /* GiftCardListViewModelTests.swift */; };
 		453EC8A12CE6DC6300F152C9 /* GiftCardDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453EC8A02CE6DC6300F152C9 /* GiftCardDetailsViewModelTests.swift */; };
+		45A577A62CE6F9D50047529B /* GiftCardPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A577A52CE6F9D50047529B /* GiftCardPurchase.swift */; };
+		45A577A82CE6F9F00047529B /* OrderConfirmation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A577A72CE6F9F00047529B /* OrderConfirmation.swift */; };
+		45A577AA2CE6FA0B0047529B /* OrderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A577A92CE6FA0B0047529B /* OrderStatus.swift */; };
+		45A577AC2CE6FA790047529B /* ShoppingCartRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A577AB2CE6FA790047529B /* ShoppingCartRepositoryImpl.swift */; };
+		45A577AE2CE6FAA10047529B /* ShoppingCartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A577AD2CE6FAA10047529B /* ShoppingCartRepository.swift */; };
+		45A577B02CE6FB490047529B /* ShoppingCartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A577AF2CE6FB490047529B /* ShoppingCartDataSource.swift */; };
+		45A577B22CE6FBF70047529B /* BuyGiftCardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A577B12CE6FBF70047529B /* BuyGiftCardUseCase.swift */; };
+		45A577B92CE6FE610047529B /* MockShoppingCartDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A577B82CE6FE610047529B /* MockShoppingCartDataSource.swift */; };
+		45A577BD2CE6FF160047529B /* MockShoppingCartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A577BC2CE6FF160047529B /* MockShoppingCartRepository.swift */; };
+		45A577C02CE6FF830047529B /* MockBuyGiftCardUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A577BF2CE6FF830047529B /* MockBuyGiftCardUseCase.swift */; };
+		45A577CC2CE7027B0047529B /* ShoppingCartRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A577CB2CE7027B0047529B /* ShoppingCartRepositoryTests.swift */; };
+		45A577CE2CE704F50047529B /* BuyGiftCardUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A577CD2CE704F50047529B /* BuyGiftCardUseCaseTests.swift */; };
 		8306B7B3254A36390021DDFD /* CandidateTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8306B7B2254A36390021DDFD /* CandidateTestApp.swift */; };
 		8306B7B7254A363B0021DDFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8306B7B6254A363B0021DDFD /* Assets.xcassets */; };
 		8306B7BA254A363B0021DDFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8306B7B9254A363B0021DDFD /* Preview Assets.xcassets */; };
@@ -123,6 +135,18 @@
 		453EC89C2CE6D63A00F152C9 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		453EC89E2CE6D6E600F152C9 /* GiftCardListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardListViewModelTests.swift; sourceTree = "<group>"; };
 		453EC8A02CE6DC6300F152C9 /* GiftCardDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		45A577A52CE6F9D50047529B /* GiftCardPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftCardPurchase.swift; sourceTree = "<group>"; };
+		45A577A72CE6F9F00047529B /* OrderConfirmation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmation.swift; sourceTree = "<group>"; };
+		45A577A92CE6FA0B0047529B /* OrderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderStatus.swift; sourceTree = "<group>"; };
+		45A577AB2CE6FA790047529B /* ShoppingCartRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartRepositoryImpl.swift; sourceTree = "<group>"; };
+		45A577AD2CE6FAA10047529B /* ShoppingCartRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartRepository.swift; sourceTree = "<group>"; };
+		45A577AF2CE6FB490047529B /* ShoppingCartDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartDataSource.swift; sourceTree = "<group>"; };
+		45A577B12CE6FBF70047529B /* BuyGiftCardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyGiftCardUseCase.swift; sourceTree = "<group>"; };
+		45A577B82CE6FE610047529B /* MockShoppingCartDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockShoppingCartDataSource.swift; sourceTree = "<group>"; };
+		45A577BC2CE6FF160047529B /* MockShoppingCartRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockShoppingCartRepository.swift; sourceTree = "<group>"; };
+		45A577BF2CE6FF830047529B /* MockBuyGiftCardUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBuyGiftCardUseCase.swift; sourceTree = "<group>"; };
+		45A577CB2CE7027B0047529B /* ShoppingCartRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartRepositoryTests.swift; sourceTree = "<group>"; };
+		45A577CD2CE704F50047529B /* BuyGiftCardUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyGiftCardUseCaseTests.swift; sourceTree = "<group>"; };
 		8306B7AF254A36390021DDFD /* CandidateTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CandidateTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8306B7B2254A36390021DDFD /* CandidateTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidateTestApp.swift; sourceTree = "<group>"; };
 		8306B7B6254A363B0021DDFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -167,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				453EC8222CE5DD7900F152C9 /* GiftCardShop */,
+				45A5779C2CE6F9580047529B /* ShoppingCart */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -321,8 +346,8 @@
 			isa = PBXGroup;
 			children = (
 				453EC8942CE6D31E00F152C9 /* Manager */,
-				453EC8822CE6CC9C00F152C9 /* Data */,
-				453EC8812CE6CC9200F152C9 /* Domain */,
+				45A577B32CE6FDCC0047529B /* GiftCardShop */,
+				45A577B42CE6FE150047529B /* ShoppingCart */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -368,6 +393,7 @@
 			isa = PBXGroup;
 			children = (
 				453EC87E2CE6CC4700F152C9 /* GiftCardShop */,
+				45A577C12CE7000C0047529B /* ShoppingCart */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -486,6 +512,200 @@
 			children = (
 				453EC89E2CE6D6E600F152C9 /* GiftCardListViewModelTests.swift */,
 				453EC8A02CE6DC6300F152C9 /* GiftCardDetailsViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		45A5779C2CE6F9580047529B /* ShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				45A5779D2CE6F9700047529B /* Domain */,
+				45A5779F2CE6F97F0047529B /* Data */,
+				45A5779E2CE6F9780047529B /* Presentation */,
+			);
+			path = ShoppingCart;
+			sourceTree = "<group>";
+		};
+		45A5779D2CE6F9700047529B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				45A577A02CE6F98A0047529B /* Entity */,
+				45A577A12CE6F9920047529B /* UseCase */,
+				45A577A22CE6F9980047529B /* Repository */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		45A5779E2CE6F9780047529B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		45A5779F2CE6F97F0047529B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				45A577A32CE6F9A40047529B /* DataSource */,
+				45A577A42CE6F9AB0047529B /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		45A577A02CE6F98A0047529B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				45A577A52CE6F9D50047529B /* GiftCardPurchase.swift */,
+				45A577A72CE6F9F00047529B /* OrderConfirmation.swift */,
+				45A577A92CE6FA0B0047529B /* OrderStatus.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		45A577A12CE6F9920047529B /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				45A577B12CE6FBF70047529B /* BuyGiftCardUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		45A577A22CE6F9980047529B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				45A577AD2CE6FAA10047529B /* ShoppingCartRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		45A577A32CE6F9A40047529B /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				45A577AF2CE6FB490047529B /* ShoppingCartDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		45A577A42CE6F9AB0047529B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				45A577AB2CE6FA790047529B /* ShoppingCartRepositoryImpl.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		45A577B32CE6FDCC0047529B /* GiftCardShop */ = {
+			isa = PBXGroup;
+			children = (
+				453EC8812CE6CC9200F152C9 /* Domain */,
+				453EC8822CE6CC9C00F152C9 /* Data */,
+			);
+			path = GiftCardShop;
+			sourceTree = "<group>";
+		};
+		45A577B42CE6FE150047529B /* ShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				45A577B62CE6FE350047529B /* Data */,
+				45A577B52CE6FE2C0047529B /* Domain */,
+			);
+			path = ShoppingCart;
+			sourceTree = "<group>";
+		};
+		45A577B52CE6FE2C0047529B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				45A577BE2CE6FF640047529B /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		45A577B62CE6FE350047529B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				45A577BB2CE6FE7B0047529B /* Repository */,
+				45A577BA2CE6FE720047529B /* DataSource */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		45A577BA2CE6FE720047529B /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				45A577B82CE6FE610047529B /* MockShoppingCartDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		45A577BB2CE6FE7B0047529B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				45A577BC2CE6FF160047529B /* MockShoppingCartRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		45A577BE2CE6FF640047529B /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				45A577BF2CE6FF830047529B /* MockBuyGiftCardUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		45A577C12CE7000C0047529B /* ShoppingCart */ = {
+			isa = PBXGroup;
+			children = (
+				45A577C42CE7002E0047529B /* Domain */,
+				45A577C32CE700290047529B /* Data */,
+				45A577C22CE7001C0047529B /* Presentation */,
+			);
+			path = ShoppingCart;
+			sourceTree = "<group>";
+		};
+		45A577C22CE7001C0047529B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				45A577C82CE700550047529B /* ViewModel */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		45A577C32CE700290047529B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				45A577C62CE700400047529B /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		45A577C42CE7002E0047529B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				45A577C52CE700360047529B /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		45A577C52CE700360047529B /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				45A577CD2CE704F50047529B /* BuyGiftCardUseCaseTests.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		45A577C62CE700400047529B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				45A577CB2CE7027B0047529B /* ShoppingCartRepositoryTests.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		45A577C82CE700550047529B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -691,6 +911,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				453EC8312CE5E04800F152C9 /* GiftCardView.swift in Sources */,
+				45A577AE2CE6FAA10047529B /* ShoppingCartRepository.swift in Sources */,
 				453EC86B2CE6C11F00F152C9 /* DIContainer.swift in Sources */,
 				453EC87C2CE6C2F600F152C9 /* DIContainer+Manager.swift in Sources */,
 				453EC8782CE6C2BF00F152C9 /* DIContainer+Repository.swift in Sources */,
@@ -698,24 +919,32 @@
 				453EC8502CE60DFA00F152C9 /* Denomination.swift in Sources */,
 				453EC8522CE60E0E00F152C9 /* CustomDenomination.swift in Sources */,
 				453EC8562CE6150F00F152C9 /* ErrorView.swift in Sources */,
+				45A577A62CE6F9D50047529B /* GiftCardPurchase.swift in Sources */,
 				453EC8672CE6B9A600F152C9 /* ImageUrl.swift in Sources */,
 				453EC84E2CE600FE00F152C9 /* GiftCardListViewModel.swift in Sources */,
 				453EC84A2CE5E7ED00F152C9 /* GiftCardShopDataSource.swift in Sources */,
+				45A577C02CE6FF830047529B /* MockBuyGiftCardUseCase.swift in Sources */,
+				45A577AA2CE6FA0B0047529B /* OrderStatus.swift in Sources */,
 				453EC83B2CE5E40C00F152C9 /* NetworkService.swift in Sources */,
 				453EC8442CE5E69000F152C9 /* GiftCardShopRepository.swift in Sources */,
+				45A577B22CE6FBF70047529B /* BuyGiftCardUseCase.swift in Sources */,
 				453EC82D2CE5E00600F152C9 /* GiftCard.swift in Sources */,
+				45A577B02CE6FB490047529B /* ShoppingCartDataSource.swift in Sources */,
 				453EC89D2CE6D63A00F152C9 /* ViewState.swift in Sources */,
 				453EC85E2CE6A74000F152C9 /* MockFetchGiftCardsUseCase.swift in Sources */,
 				453EC8742CE6C26B00F152C9 /* DIContainer+ViewModel.swift in Sources */,
 				453EC8622CE6AB3B00F152C9 /* GiftCardDetailsViewModel.swift in Sources */,
 				453EC8762CE6C2A200F152C9 /* DIContainer+UseCase.swift in Sources */,
 				453EC8602CE6AAEF00F152C9 /* GiftCardDetailsView.swift in Sources */,
+				45A577B92CE6FE610047529B /* MockShoppingCartDataSource.swift in Sources */,
+				45A577BD2CE6FF160047529B /* MockShoppingCartRepository.swift in Sources */,
 				453EC88A2CE6CECC00F152C9 /* MockFetchGiftCardDetailsUseCase.swift in Sources */,
 				453EC8412CE5E5FE00F152C9 /* FetchGiftCardsUseCase.swift in Sources */,
 				453EC8882CE6CE1300F152C9 /* MockGiftCardShopDataSource.swift in Sources */,
 				453EC8642CE6AB6200F152C9 /* FetchGiftCardDetailsUseCase.swift in Sources */,
 				453EC8862CE6CCE100F152C9 /* MockGiftCardShopRepository.swift in Sources */,
 				453EC8972CE6D33F00F152C9 /* MockNetworkService.swift in Sources */,
+				45A577AC2CE6FA790047529B /* ShoppingCartRepositoryImpl.swift in Sources */,
 				453EC8472CE5E72000F152C9 /* GiftCardShopRepositoryImpl.swift in Sources */,
 				453EC82A2CE5DE5C00F152C9 /* GiftCardListView.swift in Sources */,
 				453EC83E2CE5E56200F152C9 /* GiftCardsEndpoint.swift in Sources */,
@@ -723,6 +952,7 @@
 				453EC84C2CE5E8C900F152C9 /* HTTPMethod.swift in Sources */,
 				8306B7B3254A36390021DDFD /* CandidateTestApp.swift in Sources */,
 				453EC8352CE5E35B00F152C9 /* APIEndpoint.swift in Sources */,
+				45A577A82CE6F9F00047529B /* OrderConfirmation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,9 +960,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45A577CE2CE704F50047529B /* BuyGiftCardUseCaseTests.swift in Sources */,
 				453EC8992CE6D3C900F152C9 /* GiftCardShopDataSourceTests.swift in Sources */,
 				453EC88C2CE6CF7100F152C9 /* FetchGiftCardsUseCaseTests.swift in Sources */,
 				453EC89F2CE6D6E600F152C9 /* GiftCardListViewModelTests.swift in Sources */,
+				45A577CC2CE7027B0047529B /* ShoppingCartRepositoryTests.swift in Sources */,
 				453EC8932CE6D1FD00F152C9 /* GiftCardShopRepositoryTests.swift in Sources */,
 				453EC88E2CE6D08500F152C9 /* FetchGiftCardDetailsUseCaseTests.swift in Sources */,
 				453EC8A12CE6DC6300F152C9 /* GiftCardDetailsViewModelTests.swift in Sources */,

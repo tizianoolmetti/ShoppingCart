@@ -9,6 +9,8 @@ import Foundation
 
 extension DIContainer {
     func registerUseCases() {
+        
+        // MARK: - GiftCardShop
         container.register(FetchGiftCardsUseCase.self) { _ in
             FetchGiftCardsUseCaseImpl(repository: self.container.resolve(GiftCardShopRepository.self)!)
         }
@@ -16,5 +18,11 @@ extension DIContainer {
         container.register(FetchGiftCardDetailsUseCase.self) { _ in
             FetchGiftCardDetailsUseCaseImpl(repository: self.container.resolve(GiftCardShopRepository.self)!)
         }
+        
+        // MARK: - ShoppingCart
+        container.register(BuyGiftCardUseCase.self) { _ in
+            BuyGiftCardUseCaseImpl(repository: self.container.resolve(ShoppingCartRepository.self)!)
+        }
     }
 }
+

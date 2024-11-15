@@ -9,8 +9,14 @@ import Foundation
 
 extension DIContainer {
     func registerRepositories() {
+        // MARK: - GiftCardShop
         container.register(GiftCardShopRepository.self) { _ in
             GiftCardShopRepositoryImpl(dataSource: self.container.resolve(GiftCardShopDataSource.self)!)
+        }
+        
+        // MARK: - ShoppingCart
+        container.register(ShoppingCartRepository.self) { _ in
+            ShoppingCartRepositoryImpl(dataSource: self.container.resolve(ShoppingCartDataSource.self)!)
         }
     }
 }

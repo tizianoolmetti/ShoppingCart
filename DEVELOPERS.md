@@ -43,6 +43,7 @@ The app uses the following libraries:
 ## Testing
 The tests were conducted using XCTest
 - Unit tests for models and business logic
+- UI tests for view
 
 ## Additional Information
 

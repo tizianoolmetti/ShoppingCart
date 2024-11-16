@@ -53,10 +53,11 @@ enum Layout {
         static let bottomBarPadding: CGFloat = 16
         static let rowSpacing: CGFloat = 12
         static let listPadding: CGFloat = 16
-        static let iconSize: CGFloat = 24
+        static let iconSize: CGFloat = 30
         static let buttonMinHeight: CGFloat = 48
         static let buttonStackSpacing: CGFloat = 12
         static let cornerRadius: CGFloat = 8
+        static let appLogo = "app_logo"
     }
 }
 

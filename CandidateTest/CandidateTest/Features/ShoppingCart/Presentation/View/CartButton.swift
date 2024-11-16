@@ -18,7 +18,9 @@ struct CartButton: View {
             showCart = true
         } label: {
             HStack(spacing: Layout.Spacing.xSmall) {
-                Image(systemName: SystemImages.cart)
+                Image(Layout.ShoppingCart.appLogo)
+                    .resizable()
+                    .frame(width: Layout.ShoppingCart.iconSize, height: Layout.ShoppingCart.iconSize)
                     .font(.system(size: Layout.ShoppingCart.iconSize))
                 
                 if cartViewModel.hasItems {
@@ -31,7 +33,7 @@ struct CartButton: View {
             }
             .padding(Layout.Spacing.xSmall)
             .background(Style.Colors.ShoppingCart.cardBackground)
-            .cornerRadius(Layout.Radius.xSmall)
+            .cornerRadius(Layout.Radius.small)
         }
         .sheet(isPresented: $showCart) {
             ShoppingCartView()

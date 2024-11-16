@@ -85,6 +85,7 @@ private extension ShoppingCartView{
             
             Button {
                 viewModel.clear()
+                presentationMode.wrappedValue.dismiss()
             } label: {
                 Text(Strings.ShoppingCart.removeAll)
                     .fontWeight(.semibold)

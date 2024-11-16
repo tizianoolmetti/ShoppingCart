@@ -23,7 +23,7 @@ struct GiftCardView: View {
             imageSection
             contentSection
         }
-        .background(Color(.systemBackground))
+        .background(Color(.secondarySystemBackground))
         .cornerRadius(Layout.Radius.xxSmall)
         .shadow(radius: 1, x: 0, y:1)
         .overlay(
@@ -78,7 +78,7 @@ private extension GiftCardView {
             }) {
                 Text(Strings.GiftCard.details)
                     .font(.caption)
-                    .foregroundColor(.blue)
+                    .foregroundColor(.white)
                     .padding(.vertical, Layout.Spacing.xxSmall)
                     .padding(.horizontal, Layout.Spacing.xSmall)
             }
@@ -97,9 +97,11 @@ struct GiftCardView_Previews: PreviewProvider {
                 .frame(width: Layout.Size.cardWidth)
                 .previewDisplayName("Kmart Card")
             
-            GiftCardView(giftCard: .woolworthsCard)
+            GiftCardView(giftCard: .kmartCard)
                 .frame(width: Layout.Size.cardWidth)
-                .previewDisplayName("Woolworths Card")
+                .previewDisplayName("Kmart Card")
+                .preferredColorScheme(.dark)
+           
         }
         .padding()
         .previewLayout(.sizeThatFits)

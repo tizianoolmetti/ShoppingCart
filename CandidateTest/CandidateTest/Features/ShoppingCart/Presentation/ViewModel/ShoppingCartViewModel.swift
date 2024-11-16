@@ -10,8 +10,8 @@ import SwiftUI
 // MARK: - Shopping Cart View Model
 final class ShoppingCartViewModel: ObservableObject {
     // MARK: Published
-    @Published private(set) var items: [GiftCardPurchase] = []
-    @Published private(set) var totalAmount: Double = 0
+    @Published var items: [GiftCardPurchase] = []
+    @Published var totalAmount: Double = 0
     @Published var purchaseState: PurchaseState = .idle
     
     // MARK: Private

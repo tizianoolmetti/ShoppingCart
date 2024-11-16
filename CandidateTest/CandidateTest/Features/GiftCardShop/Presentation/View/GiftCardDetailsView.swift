@@ -316,10 +316,12 @@ struct GiftCardDetailsView_Previews: PreviewProvider {
         Group {
             GiftCardDetailsView(id: "fc453863-7abe-4b79-a144-4543b8629cff")
             
+            
             GiftCardDetailsView(id: "fc453863-7abe-4b79-a144-4543b8629cff")
                 .preferredColorScheme(.dark)
                 .previewDisplayName("Dark Mode")
         }
+        .environmentObject(DIContainer.resolve(ShoppingCartViewModel.self))
     }
 }
 #endif

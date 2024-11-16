@@ -140,7 +140,7 @@ enum Style {
         static let inStockButton = Color.green.opacity(0.8)
         static let disabledButton = Color.gray.opacity(Style.Opacity.light)
         static let addToCartButton = Color.purple.opacity(0.8)
-        static let buttonOverlay = Color(.secondarySystemBackground)
+        static let buttonOverlay = Color.blue.opacity(Style.Opacity.overlay)
         
         enum Text {
             static let primary = Color.primary

@@ -49,17 +49,33 @@ struct CartItemRow: View {
 
 struct CartItemRow_Previews: PreviewProvider {
     static var previews: some View {
-        CartItemRow(
-            item: GiftCardPurchase(
-                giftCardId: "exampleId",
-                brand: "Example Brand",
-                denominations: [
-                    Denomination.mockDenomination(),
-                    Denomination.mockDenomination(),
-                ]
-            ),
-            onRemove: {}
-        )
-        .previewLayout(.sizeThatFits)
+        Group {
+            CartItemRow(
+                item: GiftCardPurchase(
+                    giftCardId: "exampleId",
+                    brand: "Example Brand",
+                    denominations: [
+                        Denomination.mockDenomination(),
+                        Denomination.mockDenomination(),
+                    ]
+                ),
+                onRemove: {}
+            )
+            .previewLayout(.sizeThatFits)
+            
+            CartItemRow(
+                item: GiftCardPurchase(
+                    giftCardId: "exampleId",
+                    brand: "Example Brand",
+                    denominations: [
+                        Denomination.mockDenomination(),
+                        Denomination.mockDenomination(),
+                    ]
+                ),
+                onRemove: {}
+            )
+            .previewLayout(.sizeThatFits)
+            .preferredColorScheme(.dark)
+        }
     }
 }

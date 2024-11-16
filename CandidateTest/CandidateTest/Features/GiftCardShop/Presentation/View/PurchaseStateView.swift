@@ -119,46 +119,67 @@ struct PurchaseStateView: View {
     }
 }
 
-//#if DEBUG
-//struct PurchaseStateView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        VStack {
-//            // Purchasing State
-//            PurchaseStateView(
-//                state: .constant(.purchasing),
-//                doneAction: {}
-//            )
-//            .previewDisplayName("Purchasing")
-//            
-//            // Error State
-//            PurchaseStateView(
-//                state: .constant(.error(NSError(domain: "test", code: 0, userInfo: [NSLocalizedDescriptionKey: "Something went wrong"]))),
-//                doneAction: {}
-//            )
-//            .previewDisplayName("Error")
-//            
-//            // Completed State
-//            PurchaseStateView(
-//                state: .constant(.completed(OrderConfirmation(orderId: "", status: .completed, timestamp: Date(), items: [], totalAmount: 0.0))),
-//                doneAction: {}
-//            )
-//            .previewDisplayName("Completed")
-//            
-//            // Idle State
-//            PurchaseStateView(
-//                state: .constant(.idle),
-//                doneAction: {}
-//            )
-//            .previewDisplayName("Idle")
-//            
-//            // Dark Mode
-//            PurchaseStateView(
-//                state: .constant(.completed),
-//                doneAction: {}
-//            )
-//            .preferredColorScheme(.dark)
-//            .previewDisplayName("Dark Mode")
-//        }
-//    }
-//}
-//#endif
+struct PurchaseStateView_Previews: PreviewProvider {
+    static var previews: some View {
+        PreviewHelper()
+    }
+    
+    private struct PreviewHelper: View {
+        @State private var state: PurchaseState = .idle
+        @State private var showControls = true
+        
+        var body: some View {
+            ZStack {
+                Color.gray.opacity(0.2)
+                    .edgesIgnoringSafeArea(.all)
+                
+                if showControls {
+                    VStack(spacing: 16) {
+                        Text("Current State: \(stateDescription)")
+                            .font(.headline)
+                        
+                        Button("Show Purchasing") {
+                            state = .purchasing
+                        }
+                        
+                        Button("Show Error") {
+                            state = .error(
+                                NSError(domain: "PreviewError",
+                                        code: 1,
+                                        userInfo: [NSLocalizedDescriptionKey: "This is a preview error message"]
+                                       )
+                            )
+                        }
+                        
+                        Button("Show Completed") {
+                            let confirmation = OrderConfirmation(orderId: "1234",
+                                                                 status: .confirmed,
+                                                                 timestamp: Date(),
+                                                                 items: [],
+                                                                 totalAmount: 100)
+                            state = .completed(confirmation)
+                        }
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(12)
+                    .shadow(radius: 5)
+                }
+                
+                PurchaseStateView(state: $state) {
+                    print("Done action triggered")
+                }
+            }
+        }
+        
+        private var stateDescription: String {
+            switch state {
+            case .idle: return "Idle"
+            case .purchasing: return "Purchasing"
+            case .error: return "Error"
+            case .completed: return "Completed"
+            }
+        }
+    }
+}
+

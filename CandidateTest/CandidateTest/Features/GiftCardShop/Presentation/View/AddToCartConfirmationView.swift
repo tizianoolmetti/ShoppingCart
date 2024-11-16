@@ -30,7 +30,7 @@ struct AddToCartConfirmationView: View {
                         .fontWeight(.semibold)
                 }
                 .padding()
-                .background(Color(.systemBackground))
+                .background(Color(.secondarySystemBackground))
                 .cornerRadius(Layout.Radius.medium)
                 .shadow(radius: 2)
                 
@@ -56,7 +56,20 @@ struct AddToCartConfirmationView_Previews: PreviewProvider {
     @State static var isPresented = true
     
     static var previews: some View {
-        AddToCartConfirmationView(isPresented: $isPresented, message: "Added to Cart", systemImageName: "checkmark.circle")
+        Group {
+            AddToCartConfirmationView(
+                isPresented: $isPresented,
+                message: "Added to Cart",
+                systemImageName: "checkmark.circle"
+            )
+            
+            AddToCartConfirmationView(
+                isPresented: $isPresented,
+                message: "Added to Cart",
+                systemImageName: "checkmark.circle"
+            )
+            .preferredColorScheme(.dark)
+        }
     }
 }
 #endif

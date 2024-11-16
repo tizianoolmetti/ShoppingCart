@@ -18,14 +18,6 @@ final class ShoppingCartDataSourceImpl: ShoppingCartDataSource {
         // Simulate network delay
         try await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
         
-        // Simulate potential failure (10% chance)
-        let shouldFail = Double.random(in: 0...1) < 0.1
-        if shouldFail {
-            throw NSError(domain: "GiftCardError", code: 500, userInfo: [
-                NSLocalizedDescriptionKey: "Failed to process purchase. Please try again."
-            ])
-        }
-        
         // Validate purchase amounts
         for purchase in purchases {
             guard !purchase.denominations.isEmpty else {

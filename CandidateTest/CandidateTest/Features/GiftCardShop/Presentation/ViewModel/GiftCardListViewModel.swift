@@ -10,7 +10,7 @@ import Foundation
 // MARK: - ViewModel
 final class GiftCardListViewModel: ObservableObject {
     // MARK: Published
-    @Published private(set) var state: ViewState = .idle
+    @Published var state: ViewState = .idle
     
     // MARK: Private
     private let fetchGiftCardsUseCase: FetchGiftCardsUseCase

@@ -96,38 +96,81 @@ private extension GiftCardListView {
 }
 
 #if DEBUG
-// MARK: - Preview
-struct GiftCardListView_Previews: PreviewProvider {
-    static var previews: some View {
-        GiftCardListView(viewModel: GiftCardListViewModel.init(fetchGiftCardsUseCase: PreviewFetchGiftCardsUseCase()))
+// MARK: - Preview Helpers
+private extension GiftCardListView_Previews {
+    // Mock network error for preview error states
+    struct NetworkErrorMock: LocalizedError {
+        let errorDescription: String?
+        
+        init(_ description: String) {
+            self.errorDescription = description
+        }
     }
     
+    static let mockNetworkError = NetworkErrorMock("Failed to load gift cards. Please try again.")
+    
+    // Mock use case for fetching gift cards in previews
     class PreviewFetchGiftCardsUseCase: FetchGiftCardsUseCase {
-        func execute() async -> Result<[GiftCard], NetworkError> {
-            print("PreviewFetchGiftCardsUseCase is called")
-            let sampleGiftCards: [GiftCard] = [
-                GiftCard(
-                    vendor: "Eonx",
-                    id: "0f3f7b67-6f75-4f0b-9ed9-b746c2eb0bd6",
-                    brand: "Kmart",
-                    image: "https://ucarecdn.com/dc80ba04-d334-42c8-84bb-07512c480bdf/",
-                    denominations: [
-                        Denomination(price: 50, currency: "AUD", stock: "IN_STOCK"),
-                        Denomination(price: 100, currency: "AUD", stock: "IN_STOCK"),
-                        Denomination(price: 500, currency: "AUD", stock: "IN_STOCK")
-                    ],
-                    position: 1,
-                    merchantId: "66484",
-                    terms: "<div><strong>Key conditions of use:</strong></div>",
-                    isFixedValue: true,
-                    importantContent: "<ol><li><p>Print this page</p></li></ol>",
-                    cardTypeStatus: "AVAILABLE",
-                    disclaimer: "",
-                    customDenominations: nil
-                )
-            ]
-            return .success(sampleGiftCards)
+        let previewState: ViewState
+        
+        init(state: ViewState = .loaded(GiftCard.mockCards)) {
+            self.previewState = state
         }
+        
+        func execute() async -> Result<[GiftCard], NetworkError> {
+            switch previewState {
+            case .loading, .idle:
+                return .success([])
+            case .loaded(let cards):
+                return .success(cards)
+            case .error:
+                return await .failure(.networkError(mockNetworkError))
+            }
+        }
+    }
+    
+    // Helper method to create a view model with specific state
+    static func createViewModel(state: ViewState) -> GiftCardListViewModel {
+        let viewModel = GiftCardListViewModel(
+            fetchGiftCardsUseCase: PreviewFetchGiftCardsUseCase(state: state)
+        )
+        
+        viewModel.state = state
+        
+        return viewModel
+    }
+    
+    // Creates a mock shopping cart view model for preview
+    static func createMockShoppingCartViewModel() -> ShoppingCartViewModel {
+        // Mock implementation of BuyGiftCardUseCase
+        class MockBuyGiftCardUseCase: BuyGiftCardUseCase {
+            func execute(purchases: [GiftCardPurchase]) async throws -> OrderConfirmation {
+                return OrderConfirmation(
+                    orderId: "TEST-123",
+                    status: .confirmed,
+                    timestamp: Date(),
+                    items: [],
+                    totalAmount: 0.0
+                )
+            }
+        }
+        
+        return ShoppingCartViewModel(buyGiftCardUseCase: MockBuyGiftCardUseCase())
+    }
+}
+
+// MARK: - Preview Provider
+struct GiftCardListView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            GiftCardListView(viewModel: createViewModel(state: .loaded(GiftCard.mockCards)))
+                .previewDisplayName("Loaded State")
+            
+            GiftCardListView(viewModel: createViewModel(state: .loaded(GiftCard.mockCards)))
+                .preferredColorScheme(.dark)
+                .previewDisplayName("Dark Mode")
+        }
+        .environmentObject(createMockShoppingCartViewModel())
     }
 }
 #endif

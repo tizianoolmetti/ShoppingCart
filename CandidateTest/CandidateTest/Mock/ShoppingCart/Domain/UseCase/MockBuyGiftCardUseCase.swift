@@ -15,23 +15,26 @@ final class MockBuyGiftCardUseCase: BuyGiftCardUseCase {
     private(set) var isCalled: Bool
     private(set) var lastPurchases: [GiftCardPurchase]?
     private(set) var executeCount: Int = 0
+    private var purchase: [GiftCardPurchase] = []
     
     // MARK: - Initializers
     init(
         repository: ShoppingCartRepository = MockShoppingCartRepository(),
         isSuccessful: Bool = true,
-        isCalled: Bool = false
+        isCalled: Bool = false,
+        purchase: [GiftCardPurchase] = []
     ) {
         self.repository = repository
         self.isSuccessful = isSuccessful
         self.isCalled = isCalled
+        self.purchase = purchase
     }
     
     // MARK: - Methods
     func execute(purchases: [GiftCardPurchase]) async throws -> OrderConfirmation {
         isCalled = true
         executeCount += 1
-        lastPurchases = purchases
+        lastPurchases = self.purchase
         
         // Simulate minimal processing time
         try await Task.sleep(nanoseconds: UInt64(0.05 * 1_000_000_000))
@@ -44,7 +47,7 @@ final class MockBuyGiftCardUseCase: BuyGiftCardUseCase {
             orderId: "mock-usecase-\(UUID().uuidString)",
             status: .confirmed,
             timestamp: Date(),
-            items: purchases.map { purchase in
+            items: purchase.map { purchase in
                 OrderConfirmation.PurchasedItem(
                     giftCardId: purchase.brand,
                     brand: "Test Brand",
@@ -52,7 +55,7 @@ final class MockBuyGiftCardUseCase: BuyGiftCardUseCase {
                     subtotal: purchase.totalAmount
                 )
             },
-            totalAmount: purchases.reduce(0) { $0 + $1.totalAmount }
+            totalAmount: purchase.reduce(0) { $0 + $1.totalAmount }
         )
         
         return confirmation

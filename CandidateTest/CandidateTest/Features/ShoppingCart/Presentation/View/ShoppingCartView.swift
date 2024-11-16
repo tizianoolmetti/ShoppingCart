@@ -104,11 +104,76 @@ private extension ShoppingCartView{
 }
 
 #if DEBUG
-// MARK: - Preview
-struct ShoppingCartView_Previews: PreviewProvider {
-    static var previews: some View {
-        ShoppingCartView()
-            .environmentObject(ShoppingCartViewModel(buyGiftCardUseCase: DIContainer.resolve(BuyGiftCardUseCase.self)))
+#if DEBUG
+// MARK: - Preview Mocks
+private extension ShoppingCartView_Previews {
+    
+    class MockBuyGiftCardUseCase: BuyGiftCardUseCase {
+        func execute(purchases: [GiftCardPurchase]) async throws -> OrderConfirmation {
+            // Simula un ritardo di rete
+            try? await Task.sleep(nanoseconds: 2 * 1_000_000_000)
+            return OrderConfirmation.mockOrderConfirmation()
+        }
+    }
+    
+    static func createMockViewModel(withItems: Bool) -> ShoppingCartViewModel {
+        let viewModel = ShoppingCartViewModel(
+            buyGiftCardUseCase: MockBuyGiftCardUseCase()
+        )
+        
+        if withItems {
+            // Aggiungi alcuni elementi al carrello
+            viewModel.items = GiftCardPurchase.mockPurchases
+        }
+        
+        return viewModel
     }
 }
+
+// MARK: - Preview Provider
+struct ShoppingCartView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            // Preview con carrello vuoto
+            ShoppingCartView()
+                .environmentObject(createMockViewModel(withItems: false))
+                .previewDisplayName("Empty Cart")
+            
+            // Preview con elementi nel carrello
+            ShoppingCartView()
+                .environmentObject(createMockViewModel(withItems: true))
+                .previewDisplayName("Cart with Items")
+            
+            // Preview in stato di acquisto
+            ShoppingCartView()
+                .environmentObject({
+                    let vm = createMockViewModel(withItems: true)
+                    vm.purchaseState = .purchasing
+                    return vm
+                }())
+                .previewDisplayName("Purchasing State")
+            
+            // Preview con errore
+            ShoppingCartView()
+                .environmentObject({
+                    let vm = createMockViewModel(withItems: true)
+                    vm.purchaseState = .error(NSError(domain: "PreviewError",
+                                                    code: 1,
+                                                    userInfo: [NSLocalizedDescriptionKey: "Network error"]))
+                    return vm
+                }())
+                .previewDisplayName("Error State")
+            
+            // Preview con acquisto completato
+            ShoppingCartView()
+                .environmentObject({
+                    let vm = createMockViewModel(withItems: true)
+                    vm.purchaseState = .completed(OrderConfirmation.mockOrderConfirmation())
+                    return vm
+                }())
+                .previewDisplayName("Completed State")
+        }
+    }
+}
+#endif
 #endif

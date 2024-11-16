@@ -38,8 +38,8 @@ final class ShoppingCartDataSourceImpl: ShoppingCartDataSource {
         // Create purchased items with mock brand names
         let purchasedItems = purchases.map { purchase in
             OrderConfirmation.PurchasedItem(
-                giftCardId: purchase.giftCardId,
-                brand: "Brand for \(purchase.giftCardId)", // In real implementation, fetch from giftCardDetails
+                giftCardId: purchase.brand,
+                brand: "Brand for \(purchase.brand)",
                 denominations: purchase.denominations,
                 subtotal: purchase.totalAmount
             )

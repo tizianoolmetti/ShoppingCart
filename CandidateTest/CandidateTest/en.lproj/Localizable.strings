@@ -1,0 +1,49 @@
+/* 
+  Localizable.strings
+  CandidateTest
+
+  Created by Tom Olmetti on 16/11/2024.
+  
+*/
+
+// GiftCardList
+"Good Morning" = "Hey there";
+"Gift Cards for You" = "Gift Cards for You";
+"Loading Gift Cards..." = "Loading Gift Cards...";
+
+// GiftCard
+"Details" = "Details";
+
+// GiftCardDetails
+"Loading gift card details..." = "Loading gift card details...";
+"Select Amount" = "Select Amount";
+"Terms and Conditions" = "Terms and Conditions";
+"How to Use" = "How to Use";
+"Add to Cart" = "Add to Cart";
+"Buy Now" = "Buy Now";
+
+// GiftCardDetails.Purchase
+"Processing purchase..." = "Processing purchase...";
+"Purchase Failed" = "Purchase Failed";
+"Purchase Successful!" = "Purchase Successful!";
+"Your gift card will be delivered to your email shortly." = "Your gift card will be delivered to your email shortly.";
+"Try Again" = "Try Again";
+"Done" = "Done";
+
+// ShoppingCart
+"Cart" = "Cart";
+"Your cart is empty" = "Your cart is empty";
+"Checkout" = "Checkout";
+"Remove All" = "Remove All";
+"Total" = "Total";
+"items" = "items";
+"Remove" = "Remove";
+"Clear Cart" = "Clear Cart";
+"Are you sure you want to clear your cart?" = "Are you sure you want to clear your cart?";
+"Cancel" = "Cancel";
+
+// Common
+"Retry" = "Retry";
+"Error" = "Error";
+"Loading..." = "Loading...";
+"Something went wrong" = "Something went wrong";

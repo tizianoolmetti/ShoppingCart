@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct CandidateTestApp: App {
+    @StateObject private var cartViewModel = DIContainer.resolve(ShoppingCartViewModel.self)
+    
     var body: some Scene {
         WindowGroup {
             GiftCardListView()
+                .environmentObject(cartViewModel)
         }
     }
 }

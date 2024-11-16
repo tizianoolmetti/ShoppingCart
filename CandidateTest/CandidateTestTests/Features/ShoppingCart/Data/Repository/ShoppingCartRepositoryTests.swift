@@ -29,6 +29,7 @@ final class ShoppingCartRepositoryTests: XCTestCase {
         let purchases = [
             GiftCardPurchase(
                 giftCardId: "test-card-1",
+                brand: "Test Brand",
                 denominations: [
                     Denomination(price: 50.0, currency: "USD", stock: "IN_STOCK")
                 ]
@@ -42,7 +43,7 @@ final class ShoppingCartRepositoryTests: XCTestCase {
         XCTAssertEqual(confirmation.orderId, "mock-order-123")
         XCTAssertEqual(confirmation.status, .confirmed)
         XCTAssertTrue(dataSource.isCalled)
-        XCTAssertEqual(dataSource.lastPurchases?.first?.giftCardId, purchases.first?.giftCardId)
+        XCTAssertEqual(dataSource.lastPurchases?.first?.brand, purchases.first?.brand)
     }
     
     // MARK: - Failure
@@ -55,6 +56,7 @@ final class ShoppingCartRepositoryTests: XCTestCase {
         let purchases = [
             GiftCardPurchase(
                 giftCardId: "test-card-1",
+                brand: "Test Brand",
                 denominations: [
                     Denomination(price: 50.0, currency: "USD", stock: "IN_STOCK")
                 ]

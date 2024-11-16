@@ -10,15 +10,14 @@ import SwiftUI
 struct GiftCardDetailsView: View {
     // MARK: Environment
     @Environment(\.presentationMode) private var presentationMode
-
+    @EnvironmentObject private var cartViewModel: ShoppingCartViewModel
+    
     // MARK: State Object
     @StateObject private var viewModel: GiftCardDetailsViewModel
     
     // MARK: State
-    @State private var gridColumns = Array(repeating: GridItem(.flexible(), spacing: 8), count: 5)
-    
-    // MARK: Private properties
-    private let cardDimension: CGFloat = 56
+    @State private var gridColumns = Array(repeating: GridItem(.flexible(), spacing: Layout.Spacing.xSmall), count: Layout.Grid.denominationsColumnCount)
+    @State private var showAddToCartConfirmation = false
     
     // MARK: Properties
     let id: String
@@ -28,7 +27,7 @@ struct GiftCardDetailsView: View {
         self.id = id
         _viewModel = StateObject(wrappedValue: DIContainer.resolve(GiftCardDetailsViewModel.self))
     }
-
+    
     // MARK: Body
     var body: some View {
         ZStack(alignment: .top) {
@@ -36,8 +35,16 @@ struct GiftCardDetailsView: View {
                 .edgesIgnoringSafeArea(.top)
             
             closeButton
-                .padding(.leading, 20)
+                .padding(.leading, Layout.Spacing.medium)
                 .frame(maxWidth: .infinity, alignment: .leading)
+            
+            CartButtonView
+            
+            PurchaseStateView(state: $viewModel.purchaseState) {
+                presentationMode.wrappedValue.dismiss()
+            }
+            
+            AddToCartConfirmationView(isPresented: $showAddToCartConfirmation)
         }
         .onAppear {
             Task {
@@ -49,22 +56,25 @@ struct GiftCardDetailsView: View {
 
 // MARK: Subviews
 private extension GiftCardDetailsView {
+    @ViewBuilder
     private var closeButton: some View {
-        Button(action: {
-            presentationMode.wrappedValue.dismiss()
-        }) {
-            ZStack {
-                Circle()
-                    .fill(Color.black.opacity(0.3))
-                    .frame(width: 36, height: 36)
-                
-                Image(systemName: "xmark")
-                    .font(.system(size: 16, weight: .bold))
-                    .foregroundColor(.white)
+        if viewModel.isLoaded {
+            Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                ZStack {
+                    Circle()
+                        .fill(Color.black.opacity(Style.Opacity.medium))
+                        .frame(width: Layout.Size.closeButtonSize, height: Layout.Size.closeButtonSize)
+                    
+                    Image(systemName: SystemImages.close)
+                        .font(.system(size: Layout.Spacing.small, weight: .bold))
+                        .foregroundColor(Style.Colors.Text.white)
+                }
             }
         }
     }
-
+    
     @ViewBuilder
     private var content: some View {
         switch viewModel.state {
@@ -82,83 +92,102 @@ private extension GiftCardDetailsView {
             }
         }
     }
-
+    
     private var loadingView: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: Layout.Spacing.small) {
             ProgressView()
-                .scaleEffect(1.5)
-            Text("Loading gift card details...")
-                .foregroundColor(.secondary)
+                .scaleEffect(Layout.Size.loadingIndicatorScale)
+            Text(Strings.GiftCardDetails.loading)
+                .foregroundColor(Style.Colors.Text.secondary)
         }
     }
-
+    
+    @ViewBuilder
+    private var CartButtonView: some View {
+        if viewModel.isLoaded {
+            CartButton()
+                .padding(.trailing, Layout.Spacing.medium)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+    }
+    
     private func detailsContent(_ giftCard: GiftCard) -> some View {
-        ScrollView(showsIndicators: false) {
-            VStack(spacing: 0) {
-                headerSection(giftCard)
-                contentSection(giftCard)
-                cartButtons
+        VStack(spacing: 0) {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 0) {
+                    headerSection(giftCard)
+                    contentSection(giftCard)
+                    Spacer()
+                }
             }
+            
+            VStack(spacing: Layout.Spacing.small) {
+                addToCartButton
+                buyNowButton
+            }
+            .padding(.horizontal, Layout.Spacing.medium)
+            .padding(.bottom, Layout.Spacing.medium)
+            .background(Color(.systemBackground))
         }
-        .background(Color(.systemBackground))
+        .edgesIgnoringSafeArea(.bottom)
     }
-
+    
     private func headerSection(_ giftCard: GiftCard) -> some View {
         ZStack(alignment: .bottomLeading) {
             ImageUrl(giftCard.image)
-                .frame(height: 250)
+                .frame(height: Layout.Size.headerImageHeight)
                 .clipped()
             
             LinearGradient(
                 gradient: Gradient(colors: [
                     .clear,
-                    Color.black.opacity(0.3),
-                    Color.black.opacity(0.7)
+                    Color.black.opacity(Style.Opacity.medium),
+                    Color.black.opacity(Style.Opacity.heavy)
                 ]),
                 startPoint: .top,
                 endPoint: .bottom
             )
             
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: Layout.Spacing.xSmall) {
                 Text(giftCard.brand)
                     .font(.title)
                     .bold()
-                    .foregroundColor(.white)
+                    .foregroundColor(Style.Colors.Text.white)
                 
                 Text(giftCard.vendor)
                     .font(.headline)
-                    .foregroundColor(.white.opacity(0.8))
+                    .foregroundColor(Style.Colors.Text.white.opacity(Style.Opacity.overlay))
             }
-            .padding(.bottom, 24)
+            .padding(.bottom, Layout.Spacing.medium)
             .padding(.horizontal)
         }
-        .frame(height: 250)
+        .frame(height: Layout.Size.headerImageHeight)
     }
-
+    
     private func contentSection(_ giftCard: GiftCard) -> some View {
-        VStack(alignment: .leading, spacing: 24) {
+        VStack(alignment: .leading, spacing: Layout.Spacing.medium) {
             denominationsSection(giftCard)
             infoSection(giftCard)
         }
-        .padding(.horizontal, 20)
-        .padding(.bottom, 16)
+        .padding(.horizontal, Layout.Spacing.medium)
+        .padding(.bottom, Layout.Spacing.small)
     }
-
+    
     private func denominationsSection(_ giftCard: GiftCard) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Select Amount")
+        VStack(alignment: .leading, spacing: Layout.Spacing.small) {
+            Text(Strings.GiftCardDetails.selectAmount)
                 .font(.title3)
                 .fontWeight(.semibold)
             
-            LazyVGrid(columns: gridColumns, spacing: 8) {
+            LazyVGrid(columns: gridColumns, spacing: Layout.Spacing.modalActionButtonPadding) {
                 ForEach(giftCard.denominations, id: \.self) { denomination in
                     denominationCell(denomination)
                 }
             }
         }
-        .padding(.top, 16)
+        .padding(.top, Layout.Spacing.small)
     }
-
+    
     private func denominationCell(_ denomination: Denomination) -> some View {
         let isSelected = viewModel.selectedDenominations.contains(denomination)
         let isInStock = denomination.stock == "IN_STOCK"
@@ -166,91 +195,117 @@ private extension GiftCardDetailsView {
         return Button(action: {
             viewModel.toggleDenomination(denomination)
         }) {
-            VStack(spacing: 1) {
+            VStack(spacing: Layout.Spacing.xxxSmall) {
                 Text("\(Int(denomination.price))")
                     .font(.system(.subheadline, design: .rounded))
                     .bold()
                 Text(denomination.currency)
                     .font(.system(.caption2, design: .rounded))
             }
-            .foregroundColor(isInStock ? .white : .secondary)
-            .frame(width: cardDimension, height: cardDimension)
+            .foregroundColor(isInStock ? Style.Colors.Text.white : Style.Colors.Text.secondary)
+            .frame(width: Layout.Size.denominationCardSize, height: Layout.Size.denominationCardSize)
             .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(isSelected ? Color.blue : (isInStock ? Color.green.opacity(0.8) : Color.gray.opacity(0.2)))
+                RoundedRectangle(cornerRadius: Layout.Radius.xxSmall)
+                    .fill(isSelected ? Style.Colors.selectedButton :
+                            (isInStock ? Style.Colors.inStockButton : Style.Colors.disabledButton))
             )
         }
         .disabled(!isInStock)
     }
-
-    private var cartButtons: some View {
-        VStack(spacing: 12) {
-            Button(action: {
-                viewModel.handleAddToCart()
-            }) {
-                HStack {
-                    Image(systemName: "cart")
-                    Text("Add to Cart (\(viewModel.selectedDenominations.count))")
-                    Text(viewModel.formattedTotalAmount)
-                }
+    
+    private var addToCartButton: some View {
+        Button(action: handleAddToCart) {
+            HStack {
+                Image(systemName: SystemImages.cart)
+                Text("\(Strings.GiftCardDetails.addToCart) (\(viewModel.selectedDenominations.count))")
+                Text(viewModel.formattedTotalAmount)
+            }
+            .font(.headline)
+            .foregroundColor(Style.Colors.Text.white)
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(
+                viewModel.selectedDenominations.isEmpty ?
+                Style.Colors.disabledButton : Style.Colors.addToCartButton
+            )
+            .cornerRadius(Layout.Radius.xSmall)
+        }
+        .disabled(viewModel.selectedDenominations.isEmpty)
+    }
+    
+    private var buyNowButton: some View {
+        Button(action: {
+            Task {
+                await viewModel.handleBuyNow(id: id, brand: viewModel.giftCard?.brand ?? "")
+            }
+        }) {
+            Text("\(Strings.GiftCardDetails.buyNow) \(viewModel.formattedTotalAmount)")
                 .font(.headline)
-                .foregroundColor(.white)
+                .foregroundColor(Style.Colors.Text.white)
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(viewModel.selectedDenominations.isEmpty ? Color.gray.opacity(0.8) : Color.purple.opacity(0.8))
-                .cornerRadius(12)
-            }
-            .disabled(viewModel.selectedDenominations.isEmpty)
-            
-            Button(action: {
-                viewModel.handleBuyNow()
-            }) {
-                Text("Buy Now \(viewModel.formattedTotalAmount)")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(viewModel.selectedDenominations.isEmpty ? Color.gray : Color.blue)
-                    .cornerRadius(12)
-            }
-            .disabled(viewModel.selectedDenominations.isEmpty)
-
-            
+                .background(
+                    viewModel.selectedDenominations.isEmpty ?
+                    Style.Colors.disabledButton : Style.Colors.selectedButton
+                )
+                .cornerRadius(Layout.Radius.xSmall)
         }
-        .padding(.horizontal, 16)
+        .disabled(viewModel.selectedDenominations.isEmpty)
     }
-
-    private func infoSection(_ giftCard: GiftCard) -> some View {
-        VStack(alignment: .leading, spacing: 16) {
-            DisclosureGroup(
-                isExpanded: $viewModel.isTermsExpanded,
-                content: {
-                    Text(giftCard.terms.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression))
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .padding(.vertical, 8)
-                },
-                label: {
-                    Text("Terms and Conditions")
-                        .font(.headline)
-                }
-            )
-            
-            DisclosureGroup(
-                isExpanded: $viewModel.isInstructionsExpanded,
-                content: {
-                    Text(giftCard.importantContent.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression))
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                        .padding(.vertical, 8)
-                },
-                label: {
-                    Text("How to Use")
-                        .font(.headline)
-                }
-            )
+    
+    private func handleAddToCart() {
+        guard let giftCard = viewModel.giftCard,
+              !viewModel.selectedDenominations.isEmpty else { return }
+        
+        cartViewModel.add(giftCard: giftCard, denominations: viewModel.selectedDenominations)
+        
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
+        viewModel.selectedDenominations.removeAll()
+        withAnimation {
+            showAddToCartConfirmation = true
         }
-        .foregroundColor(.primary)
+    }
+    
+    private func infoSection(_ giftCard: GiftCard) -> some View {
+        VStack(alignment: .leading, spacing: Layout.Spacing.small) {
+            termsGroup(giftCard)
+            instructionsGroup(giftCard)
+        }
+        .foregroundColor(Style.Colors.Text.primary)
+    }
+    
+    private func termsGroup(_ giftCard: GiftCard) -> some View {
+        DisclosureGroup(
+            isExpanded: $viewModel.isTermsExpanded,
+            content: {
+                Text(giftCard.terms.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression))
+                    .font(.subheadline)
+                    .foregroundColor(Style.Colors.Text.secondary)
+                    .padding(.vertical, Layout.Spacing.xSmall)
+            },
+            label: {
+                Text(Strings.GiftCardDetails.terms)
+                    .font(.headline)
+            }
+        )
+    }
+    
+    private func instructionsGroup(_ giftCard: GiftCard) -> some View {
+        DisclosureGroup(
+            isExpanded: $viewModel.isInstructionsExpanded,
+            content: {
+                Text(giftCard.importantContent.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression))
+                    .font(.subheadline)
+                    .foregroundColor(Style.Colors.Text.secondary)
+                    .padding(.vertical, Layout.Spacing.xSmall)
+            },
+            label: {
+                Text(Strings.GiftCardDetails.howToUse)
+                    .font(.headline)
+            }
+        )
     }
 }
 
@@ -262,8 +317,8 @@ struct GiftCardDetailsView_Previews: PreviewProvider {
             GiftCardDetailsView(id: "fc453863-7abe-4b79-a144-4543b8629cff")
             
             GiftCardDetailsView(id: "fc453863-7abe-4b79-a144-4543b8629cff")
-            .preferredColorScheme(.dark)
-            .previewDisplayName("Dark Mode")
+                .preferredColorScheme(.dark)
+                .previewDisplayName("Dark Mode")
         }
     }
 }

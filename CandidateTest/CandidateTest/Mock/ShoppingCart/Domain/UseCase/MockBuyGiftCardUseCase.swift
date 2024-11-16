@@ -8,12 +8,15 @@
 import Foundation
 
 final class MockBuyGiftCardUseCase: BuyGiftCardUseCase {
+    
+    // MARK: - Properties
     private let repository: ShoppingCartRepository
     private let isSuccessful: Bool
     private(set) var isCalled: Bool
     private(set) var lastPurchases: [GiftCardPurchase]?
     private(set) var executeCount: Int = 0
-
+    
+    // MARK: - Initializers
     init(
         repository: ShoppingCartRepository = MockShoppingCartRepository(),
         isSuccessful: Bool = true,
@@ -24,6 +27,7 @@ final class MockBuyGiftCardUseCase: BuyGiftCardUseCase {
         self.isCalled = isCalled
     }
     
+    // MARK: - Methods
     func execute(purchases: [GiftCardPurchase]) async throws -> OrderConfirmation {
         isCalled = true
         executeCount += 1
@@ -42,7 +46,7 @@ final class MockBuyGiftCardUseCase: BuyGiftCardUseCase {
             timestamp: Date(),
             items: purchases.map { purchase in
                 OrderConfirmation.PurchasedItem(
-                    giftCardId: purchase.giftCardId,
+                    giftCardId: purchase.brand,
                     brand: "Test Brand",
                     denominations: purchase.denominations,
                     subtotal: purchase.totalAmount

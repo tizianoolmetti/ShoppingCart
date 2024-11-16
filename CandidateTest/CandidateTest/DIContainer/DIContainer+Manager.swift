@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 extension DIContainer {
     func registerManagers() {
         container.register(NetworkService.self) { _ in

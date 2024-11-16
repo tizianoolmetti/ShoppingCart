@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
-
 // MARK: - GiftCardView
 struct GiftCardView: View {
+    // MARK: EnvironmentObject
+    @EnvironmentObject private var cartViewModel: ShoppingCartViewModel
+    
     // MARK: State
     @State private var showDetails = false
     
@@ -22,14 +24,15 @@ struct GiftCardView: View {
             contentSection
         }
         .background(Color(.systemBackground))
-        .cornerRadius(8)
-        .shadow(radius: 1, x: 0, y: 1)
+        .cornerRadius(Layout.Radius.xxSmall)
+        .shadow(radius: 1, x: 0, y:1)
         .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.gray.opacity(0.1), lineWidth: 1)
+            RoundedRectangle(cornerRadius: Layout.Radius.xxSmall)
+                .stroke(Color.gray.opacity(Style.Opacity.border), lineWidth: Layout.Size.borderWidth)
         )
         .fullScreenCover(isPresented: $showDetails) {
             GiftCardDetailsView(id: giftCard.id)
+                .environmentObject(cartViewModel)
         }
     }
 }
@@ -39,34 +42,22 @@ private extension GiftCardView {
     
     @ViewBuilder
     var imageSection: some View {
-        if #available(iOS 15.0, *) {
-            AsyncImage(url: URL(string: giftCard.image)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(height: 100)
-                    .clipped()
-            } placeholder: {
-                Rectangle()
-                    .fill(Color.gray.opacity(0.2))
-                    .frame(height: 100)
-                    .overlay {
-                        ProgressView()
-                    }
-            }
-        }
+        ImageUrl(giftCard.image)
+            .aspectRatio(contentMode: .fill)
+            .frame(height: Layout.Size.cardImageHeight)
+            .clipped()
     }
     
     var contentSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: Layout.Spacing.xSmall) {
             titleSection
             detailsButton
         }
-        .padding(8)
+        .padding(Layout.Spacing.xSmall)
     }
     
     var titleSection: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        VStack(alignment: .leading, spacing: Layout.Spacing.xxxSmall) {
             Text(giftCard.brand)
                 .font(.subheadline)
                 .bold()
@@ -85,14 +76,14 @@ private extension GiftCardView {
             Button(action: {
                 showDetails = true
             }) {
-                Text("Details")
+                Text(Strings.GiftCard.details)
                     .font(.caption)
                     .foregroundColor(.blue)
-                    .padding(.vertical, 4)
-                    .padding(.horizontal, 8)
+                    .padding(.vertical, Layout.Spacing.xxSmall)
+                    .padding(.horizontal, Layout.Spacing.xSmall)
             }
-            .background(Color.blue.opacity(0.1))
-            .cornerRadius(4)
+            .background(Style.Colors.buttonOverlay)
+            .cornerRadius(Layout.Radius.xxxSmall)
         }
     }
 }
@@ -102,14 +93,12 @@ private extension GiftCardView {
 struct GiftCardView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            // Standard Card
             GiftCardView(giftCard: .kmartCard)
-                .frame(width: 180)
+                .frame(width: Layout.Size.cardWidth)
                 .previewDisplayName("Kmart Card")
             
-            // Different Denominations
             GiftCardView(giftCard: .woolworthsCard)
-                .frame(width: 180)
+                .frame(width: Layout.Size.cardWidth)
                 .previewDisplayName("Woolworths Card")
         }
         .padding()

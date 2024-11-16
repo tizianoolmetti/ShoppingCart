@@ -9,12 +9,20 @@ import Foundation
 
 extension DIContainer {
     func registerViewModels() {
+        // MARK: - GiftCardShop
         container.register(GiftCardListViewModel.self) { _ in
             GiftCardListViewModel(fetchGiftCardsUseCase: self.container.resolve(FetchGiftCardsUseCase.self)!)
         }
         
         container.register(GiftCardDetailsViewModel.self) { _ in
-            GiftCardDetailsViewModel(fetchGiftCardDetailsUseCase: self.container.resolve(FetchGiftCardDetailsUseCase.self)!)
+            GiftCardDetailsViewModel(
+                fetchGiftCardDetailsUseCase: self.container.resolve(FetchGiftCardDetailsUseCase.self)!,
+                buyGiftCardUseCase: self.container.resolve(BuyGiftCardUseCase.self)!)
+        }
+        
+        // MARK: - ShoppingCart
+        container.register(ShoppingCartViewModel.self) { _ in
+            ShoppingCartViewModel(buyGiftCardUseCase: self.container.resolve(BuyGiftCardUseCase.self)!)
         }
     }
 }

@@ -30,6 +30,7 @@ final class BuyGiftCardUseCaseTests: XCTestCase {
         let purchases = [
             GiftCardPurchase(
                 giftCardId: "test-card-1",
+                brand: "Test Brand",
                 denominations: [
                     Denomination(price: 50.0, currency: "USD", stock: "IN_STOCK")
                 ]
@@ -42,7 +43,7 @@ final class BuyGiftCardUseCaseTests: XCTestCase {
         // Assert
         XCTAssertEqual(confirmation.status, .confirmed)
         XCTAssertTrue(repository.isCalled)
-        XCTAssertEqual(repository.lastPurchases?.first?.giftCardId, purchases.first?.giftCardId)
+        XCTAssertEqual(repository.lastPurchases?.first?.brand, purchases.first?.brand)
     }
     
     // MARK: - Failure Case
@@ -54,6 +55,7 @@ final class BuyGiftCardUseCaseTests: XCTestCase {
         let purchases = [
             GiftCardPurchase(
                 giftCardId: "test-card-1",
+                brand: "Test Brand",
                 denominations: [
                     Denomination(price: 50.0, currency: "USD", stock: "IN_STOCK")
                 ]
@@ -67,7 +69,7 @@ final class BuyGiftCardUseCaseTests: XCTestCase {
         } catch let error as NSError {
             XCTAssertEqual(error.localizedDescription, "Failed to process purchase")
             XCTAssertTrue(repository.isCalled)
-            XCTAssertEqual(repository.lastPurchases?.first?.giftCardId, purchases.first?.giftCardId)
+            XCTAssertEqual(repository.lastPurchases?.first?.brand, purchases.first?.brand)
         }
     }
 }

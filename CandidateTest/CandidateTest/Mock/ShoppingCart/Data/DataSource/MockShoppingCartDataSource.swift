@@ -8,16 +8,20 @@
 import Foundation
 
 final class MockShoppingCartDataSource: ShoppingCartDataSource {
+    
+    // MARK: Properties
     private let isSuccessful: Bool
     private(set) var isCalled: Bool
     private(set) var lastPurchases: [GiftCardPurchase]?
     
+    // MARK: Initializers
     init(isSuccessful: Bool = true, isCalled: Bool = false) {
         self.isSuccessful = isSuccessful
         self.isCalled = isCalled
         self.lastPurchases = nil
     }
     
+    // MARK: Methods
     func buyGiftCards(purchases: [GiftCardPurchase]) async throws -> OrderConfirmation {
         isCalled = true
         lastPurchases = purchases
@@ -35,7 +39,7 @@ final class MockShoppingCartDataSource: ShoppingCartDataSource {
             timestamp: Date(),
             items: purchases.map { purchase in
                 OrderConfirmation.PurchasedItem(
-                    giftCardId: purchase.giftCardId,
+                    giftCardId: purchase.brand,
                     brand: "Mock Brand",
                     denominations: purchase.denominations,
                     subtotal: purchase.totalAmount
@@ -43,16 +47,5 @@ final class MockShoppingCartDataSource: ShoppingCartDataSource {
             },
             totalAmount: purchases.reduce(0) { $0 + $1.totalAmount }
         )
-    }
-}
-
-enum ShoppingCartError: LocalizedError {
-    case purchaseFailed
-    
-    var errorDescription: String? {
-        switch self {
-        case .purchaseFailed:
-            return "Failed to process purchase"
-        }
     }
 }

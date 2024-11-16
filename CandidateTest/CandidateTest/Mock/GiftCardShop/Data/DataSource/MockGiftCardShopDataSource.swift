@@ -8,14 +8,18 @@
 import Foundation
 
 final class MockGiftCardShopDataSource: GiftCardShopDataSource {
+    
+    // MARK: Properties
     private let isSuccessful: Bool
     private(set) var isCalled: Bool
-
+    
+    // MARK: Initializer
     init(isSuccessful: Bool = true, isCalled: Bool = true) {
         self.isSuccessful = isSuccessful
         self.isCalled = isCalled
     }
-
+    
+    // MARK: Methods
     func fetchGiftCards() async -> Result<[GiftCard], NetworkError> {
         isCalled = true
         if isSuccessful {
@@ -24,11 +28,11 @@ final class MockGiftCardShopDataSource: GiftCardShopDataSource {
             return .failure(.invalidData)
         }
     }
-
+    
     func fetchGiftCard(id: String) async -> Result<GiftCard, NetworkError> {
         isCalled = true
         if isSuccessful {
-            guard let giftCard = GiftCard.mockCards.first(where: { $0.id == id }) else {
+            guard GiftCard.mockCards.first(where: { $0.id == id }) != nil else {
                 return .failure(.invalidData)
             }
             return .success(GiftCard.kmartCard)

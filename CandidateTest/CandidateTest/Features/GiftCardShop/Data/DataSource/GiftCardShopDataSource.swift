@@ -31,13 +31,13 @@ final class GiftCardShopDataSourceImpl: GiftCardShopDataSource {
     }
     
     func fetchGiftCard(id: String) async -> Result<GiftCard, NetworkError> {
-            do {
-                let card: GiftCard = try await service.request(GiftCardsEndpoint.detail(id: id))
-                return .success(card)
-            } catch let error as NetworkError {
-                return .failure(error)
-            } catch {
-                return .failure(.networkError(error))
-            }
+        do {
+            let card: GiftCard = try await service.request(GiftCardsEndpoint.detail(id: id))
+            return .success(card)
+        } catch let error as NetworkError {
+            return .failure(error)
+        } catch {
+            return .failure(.networkError(error))
         }
+    }
 }

@@ -12,12 +12,14 @@ import XCTest
 final class GiftCardDetailsViewModelTests: XCTestCase {
     private var viewModel: GiftCardDetailsViewModel!
     private var fetchGiftCardDetailsUseCase: MockFetchGiftCardDetailsUseCase!
+    private var buyGiftCardUseCase: MockBuyGiftCardUseCase!
     
     private let test_id = "0f3f7b67-6f75-4f0b-9ed9-b746c2eb0bd6"
 
     override func setUp() {
         fetchGiftCardDetailsUseCase = MockFetchGiftCardDetailsUseCase()
-        viewModel = GiftCardDetailsViewModel(fetchGiftCardDetailsUseCase: fetchGiftCardDetailsUseCase)
+        buyGiftCardUseCase = MockBuyGiftCardUseCase()
+        viewModel = GiftCardDetailsViewModel(fetchGiftCardDetailsUseCase: fetchGiftCardDetailsUseCase, buyGiftCardUseCase: buyGiftCardUseCase)
     }
 
     override func tearDown() {
@@ -42,7 +44,7 @@ final class GiftCardDetailsViewModelTests: XCTestCase {
         // Arrange
         let mockError = NetworkError.invalidData
         fetchGiftCardDetailsUseCase = MockFetchGiftCardDetailsUseCase(isSuccessful: false, isCalled: false)
-        viewModel = GiftCardDetailsViewModel(fetchGiftCardDetailsUseCase: fetchGiftCardDetailsUseCase)
+        viewModel = GiftCardDetailsViewModel(fetchGiftCardDetailsUseCase: fetchGiftCardDetailsUseCase, buyGiftCardUseCase: buyGiftCardUseCase)
 
         // Act
         await viewModel.fetchGiftCard(with: test_id)

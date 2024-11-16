@@ -8,10 +8,12 @@
 import Foundation
 
 final class MockFetchGiftCardsUseCase: FetchGiftCardsUseCase {
+    // MARK: Properties
     private let repository: GiftCardShopRepository
     private let isSuccessful: Bool
     private(set) var isCalled: Bool
-
+    
+    // MARK: Initializers
     init(
         repository: GiftCardShopRepository = MockGiftCardShopRepository(),
         isSuccessful: Bool = true,
@@ -20,8 +22,10 @@ final class MockFetchGiftCardsUseCase: FetchGiftCardsUseCase {
         self.repository = repository
         self.isSuccessful = isSuccessful
         self.isCalled = isCalled
+        
     }
-
+    
+    // MARK: Methods
     func execute() async -> Result<[GiftCard], NetworkError> {
         isCalled = true
         if isSuccessful {

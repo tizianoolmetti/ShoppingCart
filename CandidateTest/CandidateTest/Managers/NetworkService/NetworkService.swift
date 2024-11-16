@@ -14,15 +14,19 @@ protocol NetworkServiceProtocol {
 
 // MARK: - Network Service Implementation
 final class NetworkService: NetworkServiceProtocol {
+    
+    // MARK: Properties
     private let session: URLSession
     private let decoder: JSONDecoder
     
+    // MARK: Initializer
     init(session: URLSession = .shared, decoder: JSONDecoder = JSONDecoder()) {
         self.session = session
         self.decoder = decoder
         self.decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
+    // MARK: Methods
     func request<T: Decodable>(_ endpoint: APIEndpoint) async throws -> T {
         var components = URLComponents()
         components.scheme = endpoint.scheme

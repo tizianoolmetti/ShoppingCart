@@ -8,16 +8,20 @@
 import Foundation
 
 final class MockShoppingCartRepository: ShoppingCartRepository {
+    
+    // MARK: Properties
     private let isSuccessful: Bool
     private(set) var isCalled: Bool
     private(set) var lastPurchases: [GiftCardPurchase]?
     
+    // MARK: Initializer
     init(isSuccessful: Bool = true, isCalled: Bool = false) {
         self.isSuccessful = isSuccessful
         self.isCalled = isCalled
         self.lastPurchases = nil
     }
     
+    // MARK: Methods
     func buyGiftCards(purchases: [GiftCardPurchase]) async throws -> OrderConfirmation {
         isCalled = true
         lastPurchases = purchases
@@ -35,7 +39,7 @@ final class MockShoppingCartRepository: ShoppingCartRepository {
             timestamp: Date(),
             items: purchases.map { purchase in
                 OrderConfirmation.PurchasedItem(
-                    giftCardId: purchase.giftCardId,
+                    giftCardId: purchase.brand,
                     brand: "Test Brand",
                     denominations: purchase.denominations,
                     subtotal: purchase.denominations.reduce(0) { $0 + $1.price }

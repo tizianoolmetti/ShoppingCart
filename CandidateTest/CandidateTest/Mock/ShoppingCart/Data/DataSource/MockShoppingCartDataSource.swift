@@ -8,7 +8,6 @@
 import Foundation
 
 final class MockShoppingCartDataSource: ShoppingCartDataSource {
-    
     // MARK: Properties
     private let isSuccessful: Bool
     private(set) var isCalled: Bool
@@ -48,4 +47,12 @@ final class MockShoppingCartDataSource: ShoppingCartDataSource {
             totalAmount: purchases.reduce(0) { $0 + $1.totalAmount }
         )
     }
+    
+    func loadCart() throws -> [GiftCardPurchase] {
+        GiftCardPurchase.mockPurchases
+    }
+    
+    func saveCart(_ items: [GiftCardPurchase]) throws {}
+    
+    func clearCart() throws {}
 }

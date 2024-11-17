@@ -9,4 +9,7 @@ import Foundation
 
 protocol ShoppingCartRepository {
     func buyGiftCards(purchases: [GiftCardPurchase]) async throws -> OrderConfirmation
+    func loadCart() throws -> [GiftCardPurchase]
+    func saveCart(_ items: [GiftCardPurchase]) throws
+    func clearCart() throws
 }

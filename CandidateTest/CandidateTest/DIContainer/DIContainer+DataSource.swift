@@ -16,7 +16,7 @@ extension DIContainer {
         
         // MARK: - ShoppingCart
         container.register(ShoppingCartDataSource.self) { _ in
-            ShoppingCartDataSourceImpl()
+            ShoppingCartDataSourceImpl(cartCacheManager: self.container.resolve(CartCacheManager.self)!)
         }
     }
 }

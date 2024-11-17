@@ -85,7 +85,6 @@ struct ErrorView_Previews: PreviewProvider {
             ErrorView(
                 title: "No Internet",
                 message: "Please check your connection",
-                buttonTitle: "Settings",
                 icon: SystemImages.noInternet
             ) {}
                 .previewDisplayName("Custom Error")

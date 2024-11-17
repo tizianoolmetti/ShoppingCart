@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct GiftCardPurchase {
-    let id = UUID()
+struct GiftCardPurchase: Codable {
+    var id = UUID()
     let giftCardId: String
     let brand: String
     let denominations: [Denomination]

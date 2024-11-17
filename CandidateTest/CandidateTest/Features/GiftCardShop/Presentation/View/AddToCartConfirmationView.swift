@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddToCartConfirmationView: View {
+    
     // MARK: Binding
     @Binding var isPresented: Bool
     

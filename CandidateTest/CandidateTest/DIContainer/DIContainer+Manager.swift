@@ -12,5 +12,9 @@ extension DIContainer {
         container.register(NetworkService.self) { _ in
             NetworkService()
         }
+        
+        container.register(CartCacheManager.self) { _ in
+            CartCacheManagerImpl()
+        }
     }
 }

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// MARK: - Shopping Cart View Model
 final class ShoppingCartViewModel: ObservableObject {
     // MARK: Published
     @Published var items: [GiftCardPurchase] = []
@@ -16,10 +15,25 @@ final class ShoppingCartViewModel: ObservableObject {
     
     // MARK: Private
     private let buyGiftCardUseCase: BuyGiftCardUseCase
+    private let loadCartUseCase: LoadCartUseCase
+    private let saveCartUseCase: SaveCartUseCase
+    private let clearCartUseCase: ClearCartUseCase
     
     // MARK: Initialization
-    init(buyGiftCardUseCase: BuyGiftCardUseCase) {
+    init(
+        buyGiftCardUseCase: BuyGiftCardUseCase,
+        loadCartUseCase: LoadCartUseCase,
+        saveCartUseCase: SaveCartUseCase,
+        clearCartUseCase: ClearCartUseCase
+    ) {
         self.buyGiftCardUseCase = buyGiftCardUseCase
+        self.loadCartUseCase = loadCartUseCase
+        self.saveCartUseCase = saveCartUseCase
+        self.clearCartUseCase = clearCartUseCase
+        
+        Task {
+            await loadCachedItems()
+        }
     }
 }
 
@@ -56,12 +70,20 @@ extension ShoppingCartViewModel {
         }
         
         updateTotalAmount()
+        
+        Task {
+            await saveItemsToCache()
+        }
     }
     
     func remove(giftCardId: String) {
         withAnimation {
             items.removeAll { $0.brand == giftCardId }
             updateTotalAmount()
+            
+            Task {
+                await saveItemsToCache()
+            }
         }
     }
     
@@ -69,6 +91,14 @@ extension ShoppingCartViewModel {
         withAnimation {
             items.removeAll()
             totalAmount = 0
+            
+            Task {
+                do {
+                    try await clearCartUseCase.execute()
+                } catch {
+                    print("Failed to clear cart cache: \(error)")
+                }
+            }
         }
     }
     
@@ -99,8 +129,46 @@ extension ShoppingCartViewModel {
             purchaseState = .completed(confirmation)
             items = []
             totalAmount = 0
+            try await clearCartUseCase.execute()
         } catch {
             purchaseState = .error(error)
         }
     }
 }
+
+// MARK: - Cache Management
+extension ShoppingCartViewModel {
+    func handleScenePhase(_ phase: ScenePhase) {
+        switch phase {
+        case .background, .inactive:
+            Task {
+                await saveItemsToCache()
+            }
+        case .active:
+            Task {
+                await loadCachedItems()
+            }
+        @unknown default:
+            break
+        }
+    }
+    
+    @MainActor
+    private func loadCachedItems() async {
+        do {
+            items = try await loadCartUseCase.execute()
+            updateTotalAmount()
+        } catch {
+            print("Failed to load cached cart items: \(error)")
+        }
+    }
+    
+    private func saveItemsToCache() async {
+        do {
+            try await saveCartUseCase.execute(items: items)
+        } catch {
+            print("Failed to save cart items to cache: \(error)")
+        }
+    }
+}
+

@@ -47,6 +47,8 @@ struct CartItemRow: View {
     }
 }
 
+#if DEBUG
+// MARK: - Preview
 struct CartItemRow_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -79,3 +81,4 @@ struct CartItemRow_Previews: PreviewProvider {
         }
     }
 }
+#endif

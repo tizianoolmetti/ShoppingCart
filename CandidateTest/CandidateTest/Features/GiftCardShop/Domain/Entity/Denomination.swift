@@ -15,7 +15,11 @@ struct Denomination: Codable, Hashable {
 
 // MARK: - Mocks
 extension Denomination {
-    static func mockDenomination(price: Double = 10.0, currency: String = "USD", stock: String = "InStock") -> Denomination {
+    static func mockDenomination(
+        price: Double = 10.0,
+        currency: String = "USD",
+        stock: String = "InStock"
+    ) -> Denomination {
         return Denomination(price: price, currency: currency, stock: stock)
     }
 }

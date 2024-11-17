@@ -40,6 +40,14 @@ The app is structured in layers:
 The app uses the following libraries:
 - SwiftInject for dependency injection
 
+## Purchase Management System
+A system for managing purchases in the cache has been introduced using FileManager:
+- Handles saving and retrieving purchase data locally
+- Supports persistence between app launches
+- Ensures data consistency and integrity
+- Offers utility functions for reading, writing, and clearing purchase data
+- Allows offline access to purchase history
+
 ## Testing
 The tests were conducted using XCTest
 - Unit tests for models and business logic

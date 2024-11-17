@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct GiftCardListView: View {
+    
     // MARK: State Object
     @StateObject private var viewModel: GiftCardListViewModel
     
-    // MARK: Private Properties
+    // MARK: Properties
     private let columns: [GridItem] = [
         GridItem(.flexible(minimum: Layout.Grid.minimumItemWidth), spacing: Layout.Spacing.small),
         GridItem(.flexible(minimum: Layout.Grid.minimumItemWidth), spacing: Layout.Spacing.small)
@@ -155,7 +156,12 @@ private extension GiftCardListView_Previews {
             }
         }
         
-        return ShoppingCartViewModel(buyGiftCardUseCase: MockBuyGiftCardUseCase())
+        return ShoppingCartViewModel(
+            buyGiftCardUseCase: MockBuyGiftCardUseCase(),
+            loadCartUseCase: MockLoadCartUseCase(),
+            saveCartUseCase: MockSaveCartUseCase(),
+            clearCartUseCase: MockClearCartUseCase()
+        )
     }
 }
 

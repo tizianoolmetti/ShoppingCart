@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ImageUrl<Placeholder: View, LoadedImage: View>: View {
-    // MARK: - Properties
+    // MARK: Properties
     private let url: String
     private let placeholderContent: () -> Placeholder
     private let loadedContent: (UIImage) -> LoadedImage
     
+    // MARK: - State Object
     @StateObject private var imageLoader: ImageLoader
     
-    // MARK: - Initialization
+    // MARK: Initialization
     init(
         _ url: String,
         cache: ImageCaching = ImageCache.shared,
@@ -28,7 +29,7 @@ struct ImageUrl<Placeholder: View, LoadedImage: View>: View {
         _imageLoader = StateObject(wrappedValue: ImageLoader(cache: cache))
     }
     
-    // MARK: - Body
+    // MARK: Body
     var body: some View {
         Group {
             if let image = imageLoader.image {
@@ -85,14 +86,17 @@ protocol ImageCaching {
 
 // MARK: - Default Image Cache
 final class ImageCache: ImageCaching {
+    // MARK: - Properties
     static let shared = ImageCache()
     private let cache = NSCache<NSString, UIImage>()
     
+    // MARK: - Initialization
     private init() {
         cache.countLimit = 100 // Maximum number of images
         cache.totalCostLimit = 1024 * 1024 * 100 // 100 MB
     }
     
+    // MARK: - Methods
     func set(_ image: UIImage, for key: String) {
         cache.setObject(image, forKey: key as NSString)
     }
@@ -104,21 +108,21 @@ final class ImageCache: ImageCaching {
 
 // MARK: - Image Loader
 final class ImageLoader: ObservableObject {
-    // MARK: - Published Properties
+    // MARK: Published
     @Published private(set) var image: UIImage?
     @Published private(set) var isLoading = false
     @Published private(set) var error: Error?
     
-    // MARK: - Private Properties
+    // MARK: Properties
     private let cache: ImageCaching
     private var cancellable: URLSessionDataTask?
     
-    // MARK: - Initialization
+    // MARK: Initialization
     init(cache: ImageCaching) {
         self.cache = cache
     }
     
-    // MARK: - Public Methods
+    // MARK: Methods
     func loadImage(from urlString: String) {
         if let cachedImage = cache.get(urlString) {
             self.image = cachedImage

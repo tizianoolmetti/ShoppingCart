@@ -9,7 +9,7 @@ import Foundation
 
 final class MockBuyGiftCardUseCase: BuyGiftCardUseCase {
     
-    // MARK: - Properties
+    // MARK: Properties
     private let repository: ShoppingCartRepository
     private let isSuccessful: Bool
     private(set) var isCalled: Bool
@@ -17,7 +17,7 @@ final class MockBuyGiftCardUseCase: BuyGiftCardUseCase {
     private(set) var executeCount: Int = 0
     private var purchase: [GiftCardPurchase] = []
     
-    // MARK: - Initializers
+    // MARK: Initializers
     init(
         repository: ShoppingCartRepository = MockShoppingCartRepository(),
         isSuccessful: Bool = true,
@@ -30,7 +30,7 @@ final class MockBuyGiftCardUseCase: BuyGiftCardUseCase {
         self.purchase = purchase
     }
     
-    // MARK: - Methods
+    // MARK: Methods
     func execute(purchases: [GiftCardPurchase]) async throws -> OrderConfirmation {
         isCalled = true
         executeCount += 1

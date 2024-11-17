@@ -23,6 +23,18 @@ extension DIContainer {
         container.register(BuyGiftCardUseCase.self) { _ in
             BuyGiftCardUseCaseImpl(repository: self.container.resolve(ShoppingCartRepository.self)!)
         }
+        
+        container.register(LoadCartUseCase.self) { _ in
+            LoadCartUseCaseImpl(repository: self.container.resolve(ShoppingCartRepository.self)!)
+        }
+        
+        container.register(SaveCartUseCase.self) { _ in
+            SaveCartUseCaseImpl(repository: self.container.resolve(ShoppingCartRepository.self)!)
+        }
+        
+        container.register(ClearCartUseCase.self) { _ in
+            ClearCartUseCaseImpl(repository: self.container.resolve(ShoppingCartRepository.self)!)
+        }
     }
 }
 

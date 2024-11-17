@@ -13,12 +13,12 @@ final class BuyGiftCardUseCaseTests: XCTestCase {
     
     private var useCase: BuyGiftCardUseCase!
     private var repository: MockShoppingCartRepository!
-
+    
     override func setUp() {
         repository = MockShoppingCartRepository()
         useCase = BuyGiftCardUseCaseImpl(repository: repository)
     }
-
+    
     override func tearDown() {
         repository = nil
         useCase = nil

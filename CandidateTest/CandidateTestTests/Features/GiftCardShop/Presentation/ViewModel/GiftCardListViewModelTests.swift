@@ -12,27 +12,27 @@ import XCTest
 final class GiftCardListViewModelTests: XCTestCase {
     private var viewModel: GiftCardListViewModel!
     private var mockFetchGiftCardsUseCase: MockFetchGiftCardsUseCase!
-
+    
     override func setUp() {
         mockFetchGiftCardsUseCase = MockFetchGiftCardsUseCase()
         viewModel = GiftCardListViewModel(fetchGiftCardsUseCase: mockFetchGiftCardsUseCase)
     }
-
+    
     override func tearDown() {
         mockFetchGiftCardsUseCase = nil
         viewModel = nil
     }
-
+    
     // MARK: - Fetch Gift Cards
-
+    
     func test_fetchGiftCards_whenSuccessful_shouldUpdateState() async {
         // Arrange
         mockFetchGiftCardsUseCase = MockFetchGiftCardsUseCase(isSuccessful: true)
         viewModel = GiftCardListViewModel(fetchGiftCardsUseCase: mockFetchGiftCardsUseCase)
-
+        
         // Act
         await viewModel.fetchGiftCards()
-
+        
         // Assert
         XCTAssertTrue(mockFetchGiftCardsUseCase.isCalled, "Should call execute() on the use case")
         XCTAssertEqual(viewModel.giftCards.count, GiftCard.mockCards.count, "Should update the state with the expected gift cards")
@@ -40,16 +40,16 @@ final class GiftCardListViewModelTests: XCTestCase {
         XCTAssertFalse(viewModel.isLoading, "Should set isLoading to false after fetching")
         XCTAssertNil(viewModel.error, "Should not have an error")
     }
-
+    
     func test_fetchGiftCards_whenFailure_shouldUpdateState() async {
         // Arrange
         let mockError = NetworkError.invalidData
         mockFetchGiftCardsUseCase = MockFetchGiftCardsUseCase(isSuccessful: false, isCalled: false)
         viewModel = GiftCardListViewModel(fetchGiftCardsUseCase: mockFetchGiftCardsUseCase)
-
+        
         // Act
         await viewModel.fetchGiftCards()
-
+        
         // Assert
         XCTAssertTrue(mockFetchGiftCardsUseCase.isCalled, "Should call execute() on the use case")
         XCTAssertFalse(viewModel.isLoading, "Should set isLoading to false after fetching")

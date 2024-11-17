@@ -8,12 +8,22 @@
 import Foundation
 protocol ShoppingCartDataSource {
     func buyGiftCards(purchases: [GiftCardPurchase]) async throws -> OrderConfirmation
+    func loadCart() throws -> [GiftCardPurchase]
+    func saveCart(_ items: [GiftCardPurchase]) throws
+    func clearCart() throws
 }
 
 final class ShoppingCartDataSourceImpl: ShoppingCartDataSource {
-    // Mock data store for gift card details
+    // MARK: Properties
     private var giftCardDetails: [String: GiftCard] = [:]
+    private let cartCacheManager: CartCacheManager
     
+    // MARK: Initializers
+    init(cartCacheManager: CartCacheManager) {
+        self.cartCacheManager = cartCacheManager
+    }
+    
+    // MARK: Methods
     func buyGiftCards(purchases: [GiftCardPurchase]) async throws -> OrderConfirmation {
         // Simulate network delay
         try await Task.sleep(nanoseconds: 2_000_000_000) // 2 seconds
@@ -48,5 +58,17 @@ final class ShoppingCartDataSourceImpl: ShoppingCartDataSource {
             items: purchasedItems,
             totalAmount: totalAmount
         )
+    }
+    
+    func loadCart() throws -> [GiftCardPurchase] {
+        try cartCacheManager.loadCart()
+    }
+    
+    func saveCart(_ items: [GiftCardPurchase]) throws {
+        try cartCacheManager.saveCart(items)
+    }
+    
+    func clearCart() throws {
+        try cartCacheManager.clearCart()
     }
 }

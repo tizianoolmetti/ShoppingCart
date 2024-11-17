@@ -6,27 +6,40 @@
 //
 
 import XCTest
-
-import XCTest
 @testable import CandidateTest
 
 
 final class ShoppingCartViewModelTests: XCTestCase {
     var viewModel: ShoppingCartViewModel!
     var mockBuyGiftCardUseCase: MockBuyGiftCardUseCase!
-
+    var mockLoadCartUseCase: MockLoadCartUseCase!
+    var mockSaveCartUseCase: MockSaveCartUseCase!
+    var mockClearCartUseCase: MockClearCartUseCase!
+    
     override func setUp() {
         super.setUp()
         mockBuyGiftCardUseCase = MockBuyGiftCardUseCase()
-        viewModel = ShoppingCartViewModel(buyGiftCardUseCase: mockBuyGiftCardUseCase)
+        mockLoadCartUseCase = MockLoadCartUseCase()
+        mockSaveCartUseCase = MockSaveCartUseCase()
+        mockClearCartUseCase = MockClearCartUseCase()
+        
+        viewModel = ShoppingCartViewModel(
+            buyGiftCardUseCase: mockBuyGiftCardUseCase,
+            loadCartUseCase: mockLoadCartUseCase,
+            saveCartUseCase: mockSaveCartUseCase,
+            clearCartUseCase: mockClearCartUseCase
+        )
     }
-
+    
     override func tearDown() {
         viewModel = nil
         mockBuyGiftCardUseCase = nil
+        mockLoadCartUseCase = nil
+        mockSaveCartUseCase = nil
+        mockClearCartUseCase = nil
         super.tearDown()
     }
-
+    
     func test_shoudAddGiftCardToTheShoppingCart_whenGiftCardIsAdded() {
         // Arrange and Act
         viewModel.add(giftCard: GiftCard.kmartCard, denominations: [Denomination.mockDenomination()])
@@ -36,7 +49,7 @@ final class ShoppingCartViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.totalAmount, 10)
         XCTAssertTrue(viewModel.hasItems)
     }
-
+    
     func test_shoudRemoveGiftCardFromTheShoppingCart_whenGiftCardIsRemoved() {
         // Arrange and Act
         viewModel.add(giftCard: GiftCard.kmartCard, denominations: [Denomination.mockDenomination()])
@@ -51,7 +64,7 @@ final class ShoppingCartViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.itemCount, 0)
         XCTAssertFalse(viewModel.hasItems)
     }
-
+    
     func test_shoudClearTheShoppingCart_whenRemoveAllIsCalled() {
         // Arrange and Act
         viewModel.add(giftCard: GiftCard.kmartCard, denominations: [Denomination.mockDenomination()])
@@ -69,7 +82,7 @@ final class ShoppingCartViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.totalAmount, 0.0)
         XCTAssertFalse(viewModel.hasItems)
     }
-
+    
     func test_shouldResetItemCountAndAmount_whenCheckoutIsCalled() async {
         viewModel.add(giftCard: GiftCard.kmartCard, denominations: [Denomination.mockDenomination()])
         await viewModel.checkout()

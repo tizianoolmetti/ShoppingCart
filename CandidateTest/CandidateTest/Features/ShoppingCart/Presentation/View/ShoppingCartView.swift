@@ -13,6 +13,7 @@ struct ShoppingCartView: View {
     
     // MARK: Environment
     @Environment(\.presentationMode) private var presentationMode
+    @Environment(\.scenePhase) private var scenePhase
     
     // MARK: Body
     var body: some View {
@@ -31,6 +32,9 @@ struct ShoppingCartView: View {
                 }
             }
             .navigationTitle(Strings.ShoppingCart.title)
+        }
+        .onChange(of: scenePhase) { newPhase in
+            viewModel.handleScenePhase(newPhase)
         }
     }
 }
@@ -104,13 +108,11 @@ private extension ShoppingCartView{
 }
 
 #if DEBUG
-#if DEBUG
 // MARK: - Preview Mocks
 private extension ShoppingCartView_Previews {
     
     class MockBuyGiftCardUseCase: BuyGiftCardUseCase {
         func execute(purchases: [GiftCardPurchase]) async throws -> OrderConfirmation {
-            // Simula un ritardo di rete
             try? await Task.sleep(nanoseconds: 2 * 1_000_000_000)
             return OrderConfirmation.mockOrderConfirmation()
         }
@@ -118,11 +120,13 @@ private extension ShoppingCartView_Previews {
     
     static func createMockViewModel(withItems: Bool) -> ShoppingCartViewModel {
         let viewModel = ShoppingCartViewModel(
-            buyGiftCardUseCase: MockBuyGiftCardUseCase()
+            buyGiftCardUseCase: MockBuyGiftCardUseCase(),
+            loadCartUseCase: MockLoadCartUseCase(),
+            saveCartUseCase: MockSaveCartUseCase(),
+            clearCartUseCase: MockClearCartUseCase()
         )
         
         if withItems {
-            // Aggiungi alcuni elementi al carrello
             viewModel.items = GiftCardPurchase.mockPurchases
         }
         
@@ -134,17 +138,14 @@ private extension ShoppingCartView_Previews {
 struct ShoppingCartView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            // Preview con carrello vuoto
             ShoppingCartView()
                 .environmentObject(createMockViewModel(withItems: false))
                 .previewDisplayName("Empty Cart")
             
-            // Preview con elementi nel carrello
             ShoppingCartView()
                 .environmentObject(createMockViewModel(withItems: true))
                 .previewDisplayName("Cart with Items")
             
-            // Preview in stato di acquisto
             ShoppingCartView()
                 .environmentObject({
                     let vm = createMockViewModel(withItems: true)
@@ -153,18 +154,16 @@ struct ShoppingCartView_Previews: PreviewProvider {
                 }())
                 .previewDisplayName("Purchasing State")
             
-            // Preview con errore
             ShoppingCartView()
                 .environmentObject({
                     let vm = createMockViewModel(withItems: true)
                     vm.purchaseState = .error(NSError(domain: "PreviewError",
-                                                    code: 1,
-                                                    userInfo: [NSLocalizedDescriptionKey: "Network error"]))
+                                                      code: 1,
+                                                      userInfo: [NSLocalizedDescriptionKey: "Network error"]))
                     return vm
                 }())
                 .previewDisplayName("Error State")
             
-            // Preview con acquisto completato
             ShoppingCartView()
                 .environmentObject({
                     let vm = createMockViewModel(withItems: true)
@@ -175,5 +174,4 @@ struct ShoppingCartView_Previews: PreviewProvider {
         }
     }
 }
-#endif
 #endif

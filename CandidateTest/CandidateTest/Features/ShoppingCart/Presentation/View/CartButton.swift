@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct CartButton: View {
+    // MARK: - EnvironmentObject
+    @EnvironmentObject private var cartViewModel: ShoppingCartViewModel
+    
     // MARK: - Properties
     @State private var showCart = false
-    @EnvironmentObject private var cartViewModel: ShoppingCartViewModel
     
     // MARK: - Body
     var body: some View {
@@ -35,6 +37,7 @@ struct CartButton: View {
             .background(Style.Colors.ShoppingCart.cardBackground)
             .cornerRadius(Layout.Radius.small)
         }
+        .accessibilityIdentifier("cartButtonIdentifier")
         .sheet(isPresented: $showCart) {
             ShoppingCartView()
                 .environmentObject(cartViewModel)
@@ -42,11 +45,18 @@ struct CartButton: View {
     }
 }
 
+#if DEBUG
 // MARK: - Preview
 struct CartButton_Previews: PreviewProvider {
     static var previews: some View {
         CartButton()
-            .environmentObject(ShoppingCartViewModel(buyGiftCardUseCase: DIContainer.resolve(BuyGiftCardUseCase.self)))
+            .environmentObject(ShoppingCartViewModel(
+                buyGiftCardUseCase: DIContainer.resolve(BuyGiftCardUseCase.self),
+                loadCartUseCase: DIContainer.resolve(LoadCartUseCase.self),
+                saveCartUseCase: DIContainer.resolve(SaveCartUseCase.self),
+                clearCartUseCase: DIContainer.resolve(ClearCartUseCase.self)
+            ))
             .previewLayout(.sizeThatFits)
     }
 }
+#endif

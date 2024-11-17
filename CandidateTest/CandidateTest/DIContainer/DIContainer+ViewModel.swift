@@ -22,7 +22,12 @@ extension DIContainer {
         
         // MARK: - ShoppingCart
         container.register(ShoppingCartViewModel.self) { _ in
-            ShoppingCartViewModel(buyGiftCardUseCase: self.container.resolve(BuyGiftCardUseCase.self)!)
+            ShoppingCartViewModel(
+                buyGiftCardUseCase: self.container.resolve(BuyGiftCardUseCase.self)!,
+                loadCartUseCase: self.container.resolve(LoadCartUseCase.self)!,
+                saveCartUseCase: self.container.resolve(SaveCartUseCase.self)!,
+                clearCartUseCase: self.container.resolve(ClearCartUseCase.self)!
+            )
         }
     }
 }

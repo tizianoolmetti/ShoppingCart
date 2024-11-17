@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct GiftCardDetailsView: View {
+    
     // MARK: Environment
     @Environment(\.presentationMode) private var presentationMode
     @EnvironmentObject private var cartViewModel: ShoppingCartViewModel

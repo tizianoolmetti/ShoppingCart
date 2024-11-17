@@ -119,6 +119,8 @@ struct PurchaseStateView: View {
     }
 }
 
+#if DEBUG
+// MARK: - Preview
 struct PurchaseStateView_Previews: PreviewProvider {
     static var previews: some View {
         PreviewHelper()
@@ -182,4 +184,4 @@ struct PurchaseStateView_Previews: PreviewProvider {
         }
     }
 }
-
+#endif

@@ -8,6 +8,7 @@
 import SwiftUI
 // MARK: - GiftCardView
 struct GiftCardView: View {
+    
     // MARK: EnvironmentObject
     @EnvironmentObject private var cartViewModel: ShoppingCartViewModel
     
@@ -101,7 +102,7 @@ struct GiftCardView_Previews: PreviewProvider {
                 .frame(width: Layout.Size.cardWidth)
                 .previewDisplayName("Kmart Card")
                 .preferredColorScheme(.dark)
-           
+            
         }
         .padding()
         .previewLayout(.sizeThatFits)

@@ -8,19 +8,19 @@
 import XCTest
 
 final class GiftCardDetailsViewUITests: XCTestCase {
-
+    
     var app: XCUIApplication!
-       override func setUp() {
-           super.setUp()
-           continueAfterFailure = false
-           app = XCUIApplication()
-           app.launch()
-       }
-   
-       override func tearDown() {
-           app = nil
-           super.tearDown()
-       }
+    override func setUp() {
+        super.setUp()
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launch()
+    }
+    
+    override func tearDown() {
+        app = nil
+        super.tearDown()
+    }
     
     func test_whenGiftCardIsSelcted_ButtonSectionIsEnableb() {
         
@@ -45,7 +45,7 @@ final class GiftCardDetailsViewUITests: XCTestCase {
         scrollViewsQuery.otherElements.containing(.staticText, identifier:"Gift Cards for You").children(matching: .other).element.children(matching: .button).matching(identifier: "Details").element(boundBy: 0).tap()
         scrollViewsQuery.otherElements.buttons["50, AUD"].tap()
         app.buttons["Add to Cart (1), $50.00"].tap()
-        let cartButton =  app.buttons["$50.00"]
+        let cartButton = app.buttons["cartButtonIdentifier"]
         
         //Assert
         XCTAssertTrue(cartButton.exists)
